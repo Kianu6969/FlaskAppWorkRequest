@@ -1,0 +1,97 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+		
+	<main class="content-main">
+		<!-- Navigations -->
+		<section class="navbar">
+
+			<div class="nav-home">
+				<img class='nav-icon' src="{{ url_for('static', filename='img/home.svg') }}">
+				<p>Home</p>
+			</div>
+			
+			<div class="nav-staff">
+				<img class='nav-icon' src="{{ url_for('static', filename='img/staff.svg') }}">
+				<p>Work Staff</p>
+			</div>
+
+			<div class="nav-requests">
+				<img class='nav-icon' src="{{ url_for('static', filename='img/form.svg') }}">
+				<p>Requests</p>
+			</div>
+
+		</section>
+
+		<!-- Main Feed -->
+		<section class="feed">
+			<div class="feed-home feed-nav">
+				<section class="info">
+					<div data-req='{{ countReq }}' class="number-of-approved-requests show-info">
+						<img src="{{ url_for('static', filename='img/form.svg') }}">
+					</div>
+					<div data-req='{{ countStaff }}' class="number-of-ongoing-requests show-info">
+						<img src="{{ url_for('static', filename='img/ongoing.svg') }}">
+					</div>
+				</section>
+				<section class="approved-requests">
+					<div class="header">
+						<h1>Ongoing Requests</h1>
+					</div>
+
+					<div class="body">
+					{% for req in workRequest  %}
+						{% if req.status != 'unApproved' and req.status != 'Pending'%}
+						<section class="body-content">
+							<header>{{req.requestorName}}</header>
+							<main>
+								<h1>{{req.requestTitle}}</h1>
+								<body onload="progress()">
+									{% if req.status == 'Approved' %}
+									<ul class="progress">
+										<li class="approved material-icons" value="0%">check</li>
+										<li class="ongoing material-icons">close</li>
+										<li class="finished material-icons">close</li>
+										<div class="progress-bar"></div>
+									</ul>
+									{% elif req.status == 'OnGoing'%}
+									<ul class="progress">
+										<li class="approved material-icons" value="50%">check</li>
+										<li class="ongoing material-icons">close</li>
+										<li class="finished material-icons">close</li>
+										<div class="progress-bar"></div>
+									</ul>
+									{% elif req.status == 'Finished'%}
+									<ul class="progress">
+										<li class="approved material-icons" value="90%">check</li>
+										<li class="ongoing material-icons">close</li>
+										<li class="finished material-icons">close</li>
+										<div class="progress-bar"></div>
+									</ul>
+									{% endif %}
+								</body>
+							</main>
+							<footer>status: {{req.status}}</footer>
+						</section>
+
+						{% endif %}
+					{% endfor %}
+					</div>
+
+					<div class="footer"></div>
+				</section>
+			</div>
+
+			<div class="feed-staff feed-nav">Staff</div>
+			<!-- <div class="feed-requestor feed-nav">requestor</div> -->
+			<div class="feed-request feed-nav">requests</div>
+		</section>
+
+	</main>
+
+	<footer class="content-footer">
+			foot
+	</footer>
+
+{% endblock content %}

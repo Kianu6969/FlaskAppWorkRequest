@@ -1,0 +1,107 @@
+
+<========== Work Request Database Structure ==========>
+
+
+Admin: (db table)
+	- Id
+	- Username / Email
+	- Password
+	- Work Order: (inside will be the name of the work request which will let the admin approve or not)
+			- Requested Work
+			- Assigned to
+			- Priority:
+					- High (Must be done with in a day or two)
+					- Medium (Must be done with in a week)
+					- Low (Must be done when there is a chance)
+			- Date
+			- Estimated No. of days to complete
+
+
+
+Requestor: (db table)
+	- Id
+	- Requesting Department / Unit / Office
+	- Password
+	- Availabilty of Materials (Y / N)
+	- Availabilty of Funds (Y / N)
+	- Estiamted Cost
+	- Work Order Request Form: (This can be on a separate db table)
+				- Work Location
+				- Date
+				- Room Number / Name of Office
+				- Work Requested: (I assume this is what type of work the work staff is going to do)
+						- Bill of Materials
+						- Repair
+						- Replacement
+						- Fabrication
+						- Installation
+						- Construction
+						- Landscaping
+						- Cleaning
+						- Hauling
+						- Plumbing
+						- Painting / Repainting
+						- Others
+
+
+
+Work Staff: (db table)
+	- Id
+	- Username
+	- Password
+	- Job description
+	- Ratings and Comments
+	- Work Status Report:
+				- Status (Completed / Not Completed)
+				- Date Completed
+				- Actual Cost
+				- Reasons for non-completion
+
+
+
+Possible Foreign Key Connections:
+
+		Work Order Request Form ID -> Work Order ID -> Work Staff Assignment (Work Staff Id) -> Work Satus Report
+
+
+
+
+
+
+.main-content-body span{
+	font-size: var(--fn-large);
+}
+.main-content-progress{
+	/*background: var(--gray);*/
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.progress span{
+	background: var(--orange);
+	border-radius: 10%;
+	margin-left: 0rem;
+	padding: var(--fn-medium);
+	font-size: var(--fn-regular);
+	font-weight: bold;
+}
+
+.progress::after{
+	content: 'Approved';
+	display: block;
+	text-align: center;
+	margin-top: var(--fn-large);
+}
+.progress:nth-child(2)::after{
+	content: 'Ongoing';
+}
+.progress:nth-child(3)::after{
+	content: 'Finished';
+}
+.main-content-footer{
+	border-top: 1px solid var(--white);
+}
+.main-content-footer section{
+	padding: 0;
+}

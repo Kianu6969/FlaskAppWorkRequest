@@ -1,0 +1,147 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+		<!-- | WORK REQUESTS SECTION | -->
+	<section class="content-left">
+		<div class="header">
+			Work Requests
+		</div>
+
+		<div class="body">
+			{% for req in workRequest %}
+				{% if req.status == 'unApproved' or req.status == 'Pending' %}
+				<section class="body-content">
+					<label class="department">{{ req.requestorName }}</label>
+					<label class="work-request"><a href="{{ url_for('adminPageApproval', name = req.requestorName, idNum= req.id )}}">{{ req.requestTitle }}</a></label>
+					<label class="date">{{ req.date }}</label>
+				</section>
+
+				{% endif %}
+			{% endfor%}
+		</div>
+
+		<div class="footer">
+			<button href="#" class="registerRequestor-btn">Add Requestor</button>
+		</div>
+
+		<!-- Register Requestor Field -->
+		<span class="modal-bg">
+			<span class="modal">
+				<label>Add Department</label>
+				<form method="POST"action="" class="modal-add-requestor">
+					{{ form.hidden_tag() }}
+					<span class="material-icons person-icon">apartment</span>
+					<!-- <input class="username" type="text" name="username" placeholder="Enter Department name"></input> -->
+					{{ form.userName(class="username", placeholder="Enter Department") }}
+					<!-- <input class="password" type="password" name="password" placeholder="Enter Password"></input> -->
+					{{ form.passWord(class="password", placeholder="Enter Password") }}
+					<!-- <input class="re-password" type="password" name="re-password" placeholder="Re-enter Password"></input> -->
+					
+					<!-- <input id="submit-btn" type="submit" name="submit" value="Add"></input> -->
+					{{ form.submitReq(id="submit-btn") }}
+				</form>
+				<img id="close-btn" src="{{ url_for('static', filename='img/close-btn.svg') }}"></img>
+			</span>
+		</span>
+		<!-- END Register Requestor Field -->
+
+		<!-- Register Staff Field -->
+		<span class="modal-bg-staff">
+			<span class="modal">
+				<label>Add Staff</label>
+				<form method="POST"action="" class="modal-add-staff">
+					{{ form2.hidden_tag() }}
+					<span class="material-icons person-icon">person</span>
+					<!-- <input class="username" type="text" name="username" placeholder="Enter Department name"></input> -->
+					{{ form2.userName(class="username-staff", placeholder="Enter Staff Name") }}
+					<!-- <input class="password" type="password" name="password" placeholder="Enter Password"></input> -->
+					{{ form2.passWord(class="password-staff", placeholder="Enter Password") }}
+					<!-- <input class="re-password" type="password" name="re-password" placeholder="Re-enter Password"></input> -->
+					
+					<!-- <input id="submit-btn" type="submit" name="submit" value="Add"></input> -->
+					{{ form2.submitStaff(id="submit-btn") }}
+				</form>
+				<img id="close-btn-staff" src="{{ url_for('static', filename='img/close-btn.svg') }}"></img>
+			</span>
+		</span>
+		<!-- END Register Staff Field -->
+
+	</section>
+	<!-- | END WORK REQUEST SECTION | -->
+
+		<!-- | MAIN SECTION CONTENT | -->
+	<main class="content-main">
+		<header class="main-header">Approved Work Requests
+			{% with messages = get_flashed_messages() %} 
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+            {% endwith %}
+		</header>
+		<!-- Approved Work Request section that is ongoing or fhinished -->
+		<section class="main-body">
+			{% for req in workRequest %}
+				{% if req.status == 'Approved' or req.status == 'On Going'%}
+					<div class="main-content">
+
+						<div class="main-content-header">{{req.requestorName}}</div>
+
+						<div class="main-content-body">
+							<span>{{ req.requestTitle }}</span>
+							<ul class="main-content-progress">
+								<li>
+									<div class="progress one">1</div>
+									<p>Approved</p>
+								</li>
+								<li>
+									<div class="progress two">2</div>
+									<p>On going</p>
+								</li>
+								<li>
+									<div class="progress three">3</div>
+									<p>Finished</p>
+								</li>
+							</ul>
+						</div>
+
+						<div class="main-content-footer">
+							<section class="main-date">{{ req.date }}</section>
+							<section class="main-priority-level">Piority Level : {{ req.priorityLevel }}</section>
+						</div>
+
+					</div>
+				{% endif %}
+			{% endfor %}
+
+		</section>
+
+		<footer class="main-footer"></footer>
+
+	</main>
+
+		<!-- | WORK STAFF SECTION | -->
+	<section class="content-right">
+		<header class="content-header-staff">
+			Work Staff
+		</header>
+
+		<main class="content-main-staff">
+			Content
+		</main>
+
+		<footer class="content-footer-staff">
+			<button href="#" class="registerStaff-btn">Add Staff</button>
+		</footer>
+	</section>
+
+		<!-- | FOOTER SECTION | -->
+	<footer class="content-footer">
+		
+	</footer>
+
+{% endblock content %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% if title %}
+	<title>Work Request - {{ title }}</title>
+    {% else %}
+    <title>Work Request</title>
+    {% endif%}
+
+    <!-- Setting Different css links -->
+    {% if title == 'Login Page'%}
+    	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    {% elif title == 'Admin Page'%}
+    	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='adminDashboard.css') }}">
+    {% elif title == 'Requestor Page'%}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='requestorDashboard.css') }}">
+    {% elif title == 'Staff Page'%}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='staffDashboard.css') }}">
+     {% elif title == 'Admin Approval Page'%}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='adminApproval.css') }}">
+    {% endif%}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+
+
+
+	<div class="container">
+        {% if title != 'Login Page'%}
+                <!-- HEADER SECTION-->
+        <header class="content-header">
+            <div class="img-box">
+                <!-- <img id="logo" src="{{ url_for('static', filename='img/bag-case.svg') }}"></img> -->
+                <img class="logo_slsu" src="{{ url_for('static', filename='img/logo_slsu.svg') }}">
+            </div>
+
+            <!-- For the different user urls -->
+            {% if title == 'Admin Page'%}
+                <section class="header-title">
+                    <a href="{{ url_for('adminPage') }}">Work Request System</a>
+                </section>
+                <section class="header-user">   
+                    {{ user }}
+                </section>
+            {% elif title == 'Requestor Page' %}
+                <section class="header-title">
+                    <a href="{{ url_for('requestorPage') }}">Work Request System</a>
+                </section>
+                <section class="header-user">   
+                    {{ user }}
+                </section>
+            {% elif title == 'Staff Page' %}
+                <section class="header-title">
+                    <a href="{{ url_for('staffPage') }}">Work Request System</a>
+                </section>
+                <section class="header-user">   
+                    {{ user }}
+                </section>
+            {% elif title == 'Admin Approval Page' %}
+                <section class="header-title">
+                    <a href="{{ url_for('adminPage') }}">Work Request System</a>
+                </section>
+                <section class="header-user">   
+                    {{ user }}
+                </section>
+            {% endif %}
+
+            <div class="header-profile">
+                {% if current_user.is_authenticated == True %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
+            </div>
+           
+        </header>
+        {% endif%}
+
+        
+
+		{% block content %}{% endblock content %}
+	</div>
+
+    {% if title == 'Admin Page'%}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/adminDashboard.js') }}"></script>
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/staffAdd.js') }}"></script> -->
+    {% elif title == 'Requestor Page'%}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/requestorAddWork.js') }}"></script>
+       
+    {% endif %}
+    
+    
+</body>	
+</html>

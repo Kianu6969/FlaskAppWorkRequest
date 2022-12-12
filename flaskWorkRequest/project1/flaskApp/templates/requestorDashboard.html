@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<!-- MAIN CONTENT -->
+	<section class="content-main">
+		<!-- Main-Header -->
+		<div class="content-main-head">
+			Requests Time Line
+		</div><!-- End Main-Header -->
+
+		<!-- Main-Body -->
+		<div class="content-main-body">
+			<!-- Request Status  -->
+			{% for userForms in userFrom %}
+			<div class="content-main-body-requests">
+				<header>
+					{{ userForms.requestTitle }}
+				</header>
+
+				<main>
+					<section class="approved"><i class="material-icons">check</i></section>
+
+					<section class="onGoing"><i class="material-icons">check</i></section>
+
+					<section class="finished"><i class="material-icons">check</i></section>
+				</main>
+				
+
+				<footer>
+					<span>Priority Level: {{ userForms.priorityLevel }}</span>
+					<span>
+						<p>Assigned: </p> 
+						<a href="">Mr. Unknown</a>
+					</span>
+					<span>
+						<p>Status: </p> 
+						<p id="status">{{ userForms.status }}</p>
+					</span>
+				</footer>
+			</div>
+			{% endfor %}
+		</div> <!-- End Main-Body -->
+
+		<!-- Main-Foot -->
+		<div class="content-main-foot">
+			<button class="request-work-btn">Request Work</button>
+		</div><!-- End Main-Foot -->
+
+
+		<!-- ========== Modal Pop-up Work Request From ========== -->
+
+		<div class="modal-popup-request-form">
+			<section class="request-form">
+				<header>Work Request form</header>
+				<main>
+					<form action="" method="POST">
+						{{ form.hidden_tag() }}
+						<fieldset class="request-form-header">
+							<legend>Name of Request</legend>
+							{{ form.requestTitle(class='requestTitle',placeholder='Enter Title') }}
+							{{ form.requestRoomNumber(class='requestRoomNumber',placeholder='Enter Room Number') }}
+						</fieldset>
+
+						<fieldset class="request-choices">
+							<legend>Choose Type of Work</legend>
+							{{ form.workOrder(class='request-form-workOrder') }}
+						</fieldset>
+						<fieldset class="request-form-availability">
+							<legend>Material Availability</legend>
+							{{ form.materialAvailability }}
+						</fieldset>
+						{{ form.submit(class='request-form-submit') }}
+					</form>
+					<span class="request-form-close material-icons">
+						close
+					</span>
+				</main>
+
+				<footer>
+				</footer>
+			</section>
+		</div>
+		<!-- ========== END | Modal Pop-up Work Request From ========== -->
+
+	</section>
+	<!-- END MAIN CONTENT -->
+
+	<!-- LEFT SIDE CONTENT -->
+	<section class="content-side-left">
+
+		<span class="content-side-left-profile">
+			<i class="material-icons content-side-left-icon">person</i>
+			<a href="">Profile</a>
+		</span>
+
+		<span class="content-side-about">
+			<i class="material-icons content-side-left-icon">help</i>
+			<a href="">About</a>
+		</span>
+
+	</section>
+	<!-- END LEFT SIDE CONTENT -->
+
+	<!-- RIGHT SIDE CONTENT -->
+	<section class="content-side-right">
+<!-- 
+		<header class="content-side-right-header">
+			Pending Requests
+		</header>
+
+		<main class="content-side-right-main">
+		</main>
+
+		<footer class="content-side-right-footer">
+			Footer
+		</footer> -->
+
+	</section>
+
+	<!-- END RIGHT SIDE CONTENT -->
+
+	<!-- FOOT CONTENT -->
+	<section class="content-foot">
+		
+	</section>
+	<!-- END FOOT CONTENT -->
+
+{% endblock content %}

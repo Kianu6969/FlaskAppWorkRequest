@@ -1,0 +1,91 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300&display=swap');
+/*Filter converter for svg images*/
+/*https://codepen.io/sosuke/pen/Pjoqqp*/
+
+*{
+	font-family: 'Open Sans';
+	margin: 0;
+}
+
+/* color schemes */
+:root{
+	--white: #F3F9FB;
+	--blue: #113F67; 
+	--lightBlue: #226597;
+	--blueGreen: #87C0CD;
+	--box-shadow-blueGreen: rgba(135, 192, 205,0.3);
+	--box-shadow: 5px 5px 10px 1px rgba(135, 192, 205,0.4), -5px -5px 10px 1px rgba(255, 255, 255,0.8);
+	--box-shadow-low: 5px 5px 10px 1px rgba(135, 192, 205,0.4);
+	--box-shadow-high: -5px -5px 10px 1px rgba(255, 255, 255,0.8);
+
+	--fn-regular: 1rem;
+	--fn-small: 0.7rem;
+	--fn-large: 2rem;
+	--fn-xlarge: 3rem;
+	--fn-medium: 1.5rem;
+	--border-radius: 2rem;
+
+	--img-color-blue: invert(19%) sepia(21%) saturate(3410%) hue-rotate(178deg) brightness(94%) contrast(92%);
+	--img-color-lightBlue: invert(29%) sepia(81%) saturate(550%) hue-rotate(165deg) brightness(95%) contrast(88%);
+	--img-color-blueGreen: invert(76%) sepia(41%) saturate(278%) hue-rotate(144deg) brightness(91%) contrast(84%);
+	--img-color-white: invert(98%) sepia(1%) saturate(1507%) hue-rotate(172deg) brightness(101%) contrast(97%);
+
+	--setBefore: 0%;
+}
+
+
+
+body{
+	background: var(--white);
+	color: var(--white);
+}
+
+input{
+	padding: 1rem;
+	border-radius: var(--border-radius);
+	outline: none;
+	border: none;
+	font-weight: lighter;
+	color: var(--blue);
+}
+a{
+	text-decoration: none;
+	color: var(--blueGreen);
+}
+
+
+.logo_slsu{
+	width: 3rem;
+	height: 3rem;
+	filter: invert(97%) sepia(45%) saturate(6373%) hue-rotate(166deg) brightness(85%) contrast(88%);
+}
+
+.header-profile a{
+	text-decoration: none;
+	color: var(--white);
+}
+.header-profile a:hover, .header-title a:hover{
+	color: var(--blueGreen);	
+}
+
+
+/* scroll bar style ===============================*/
+::-webkit-scrollbar{
+	width: 0px;
+	height: 0px;
+}
+::-webkit-scrollbar-thumb{
+	background: var(--gray);
+	border-radius: var(--fn-small);
+	border: 5px solid var(--black);
+}
+::-webkit-scrollbar-track{
+	background: var(--black);
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background: var(--orange);
+}
+
+

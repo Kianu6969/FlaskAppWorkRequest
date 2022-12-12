@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	
+	<!-- SECTION HEADER -->
+	<header class="content-header">
+		<img class="logo_slsu" src="{{ url_for('static', filename='img/logo_slsu.svg') }}">
+		<h1>Work Request System</h1>
+		<a href="">About</a>
+	</header>
+
+	<!-- SPACING -->
+	<section class="content-left"></section>
+
+	<!-- MAIN CONTENT LOGIN FORM -->
+	<main class="content-main">
+		
+		<div class="left-content">
+			<!-- <span class="caption">Request A Work Order Now</span> -->
+			<span class="logo">
+				<img src="{{ url_for('static', filename='img/logo.svg') }}">
+			</span>
+		</div>
+		<!-- the 3 different users -->
+		<div class="form-container right-content">
+			<!-- <label class="form-label">Administrator</label> -->
+			<section class="form-header">Sign In</section>
+			
+			<form method="POST" action=" " class="form-body">
+				{% with messages = get_flashed_messages() %} 
+	                {% if messages %}
+	                    {% for message in messages %}
+	                        <div class="alert">
+	                            {{ message }}
+	                        </div>
+	                    {% endfor %}
+	                {% endif %}
+        		{% endwith %}
+				<!-- <input type="text" name="userName" placeholder="Enter User Name">
+				<input type="password" name="password" placeholder="Enter Password">
+				<input type="submit" value="Login" class="form-btn"> -->
+				{{ form.hidden_tag() }}
+				{{ form.userName(class="username", placeholder="Enter Username") }}
+				{{ form.passWord(class="password", placeholder="Enter Password") }}
+				{{ form.submit(class="form-btn") }}
+
+			</form>
+			<section class="form-footer">Don't have an account?<a href="#"> Ask Administrator</a></section>
+		</div>
+		
+		
+	</main>
+
+	<!-- SECTION FOOTER -->
+	<footer class="content-footer">
+		<span>&copy Billionaire Gang</span>
+	</footer>
+
+{% endblock content %}

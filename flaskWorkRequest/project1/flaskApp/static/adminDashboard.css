@@ -1,0 +1,364 @@
+@import 'globalVariables.css';
+
+
+
+body{
+	background: var(--white);
+}
+
+
+.container{
+	margin: 0;
+	display: grid;
+	height: 100vh;
+
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 0fr 1fr 0.0fr;
+
+	grid-template-areas: 
+			'h h h'
+			'm m m'
+			'f f f';
+}
+/*=================================*/
+/* CONTENT HEADER ================*/
+/*===============================*/
+.content-header{
+	grid-area: h;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: var(--fn-small);
+}
+
+.img-box{
+	flex-grow: 0;
+}
+.header-title{
+	flex-grow: 1;
+	margin-left: 1rem;
+	
+}
+.header-title a{
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+.header-user{
+	flex-grow: 1;
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+
+.header-profile{
+	flex-grow: 0.3;
+}
+.header-profile a{
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+
+/*=================================*/
+/* CONTENT MAIN ================*/
+/*===============================*/
+.content-main{
+	grid-area: m;
+	background: var(--white);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 0fr 1fr;
+	grid-template-areas: 
+			'h h'
+			'm m'
+}
+/* NAvigation bar*/
+.navbar{
+	grid-area: h;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-bottom: 1rem;
+	margin-left: 15rem;
+	margin-right: 15rem;
+}
+
+.navbar div{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 1rem;
+	background: var(--white);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+	cursor: pointer;
+	width: 10rem;
+	justify-content: center;
+	align-items: center;
+}
+.navbar div img, .feed-home section img{
+	filter: var(--img-color-blue);
+}
+.navbar div p{
+	font-size: var(--fn-regular);
+	margin-left: 0.2rem;
+	font-weight: normal;
+	color: var(--blue);
+}
+
+/*===== Different pages of the main feed ======*/
+
+/*====================================*/
+/* ======== HOME PAGE ============== */
+/*==================================*/
+.feed{
+	grid-area: m;
+	background: var(--white);
+	/*border-top: 1px solid var(--blueGreen);*/
+	margin-left: 5rem;
+	margin-right: 5rem;
+	position: relative;
+}
+.feed-nav{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--white);
+	width: 100%;
+	height: 100%;
+	color: var(--blue);
+	z-index: 2;
+	/*box-shadow: var(--box-shadow-low);*/
+	/*border-radius: 2rem;*/
+	border: 1px solid var(--blueGreen);
+	border-radius: 1.5rem;
+	/*padding: 1rem;*/
+}
+
+/* Home Screen Left Side =======>*/
+.feed-home{
+	background: var(--white);
+	/*z-index: 10;*/
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-rows: 1fr;
+	grid-template-columns: 0.1fr 1fr;
+
+}
+/* The hover circles  */
+.feed .info{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 1rem;
+}
+.feed-home .info div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: var(--box-shadow);
+	width: 5rem;
+	height: 5rem;
+	margin-bottom: 1rem;
+	cursor: pointer;
+	border-radius: 50%;
+	transition: transform, background, .1s;
+	position: relative;
+}
+.feed-home .info div:hover{
+	transform: scale(1.1);
+	background: var(--blueGreen);
+}
+
+.feed-home .info:first-child{
+	padding: 1rem;
+	/*border-right: 1px solid var(--blueGreen);*/
+	/*background: red;*/
+	
+}
+/* show the content after */
+.feed-home .info div:first-child:hover::after
+{
+	content: 'Requests: ' attr(data-req);
+	width: 8rem;
+	padding: 0.8rem;
+	position: absolute;
+	top: 50%;
+	left: 70%;
+	transform: translateY(-50%);
+	background: var(--blueGreen);
+	color: var(--blue);
+	font-weight: bold;
+	border-radius: 1rem 1rem 1rem 1rem;
+}
+.feed-home .info div:nth-child(2):hover::after{
+	content: 'Staff: ' attr(data-req);
+	width: 8rem;
+	padding: 0.8rem;
+	position: absolute;
+	top: 50%;
+	left: 70%;
+	transform: translateY(-50%);
+	background: var(--blueGreen);
+	color: var(--blue);
+	font-weight: bold;
+	border-radius: 1rem 1rem 1rem 1rem;
+}
+
+/* Home Screen Rigt Side =======>*/
+.feed-home .approved-requests{
+	display: flex;
+	flex-direction: column;
+
+}
+.approved-requests .header{
+	/*background: red;*/
+	border-bottom: 1px solid var(--blueGreen);
+	/*grid-area: h;*/
+	flex-grow: 0;
+}
+/* title of the approved requests */
+.approved-requests .header h1{
+	font-size: var(--fn-large);
+	font-weight: lighter;
+	text-align: center;
+	color: var(--blue);
+}
+/* body of the approved requests */
+.approved-requests .body{
+	/*background: yellow;*/
+	/*grid-area: m;*/
+	padding: 1rem;
+	margin: 0rem 0rem 0rem 0rem;
+	display: flex;
+	flex-direction: column;
+	height: 1rem;
+	flex-grow: 1;
+	overflow: scroll;
+}
+.body-content{
+	background: var(--white);
+	/*border-radius: 1rem;*/
+	padding: 0rem;
+	display: flex;
+	flex-direction: column;
+	/*box-shadow: var(--box-shadow-low);*/
+	box-shadow: 10px 10px var(--blueGreen);
+	border: 1px solid var(--blueGreen);
+	margin: 0rem 10rem 2rem 10rem;
+}
+
+.body-content header{
+	padding: 1rem 0rem 0rem 0rem;
+	/*border-bottom: 1px solid var(--blueGreen);*/
+	text-align: center;
+	font-size: var(--fn-regular);
+	font-weight: normal;
+}
+.body-content main{
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+.body-content main h1{
+	margin-left: 3rem;
+	margin-bottom: 0.5rem;
+	font-size: var(--fn-large);
+	font-weight: normal;
+}
+/* Progress Bar */
+.progress{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/*align-items: center;*/
+	margin: 0rem 3rem 0rem 3rem;
+	/*background: pink;*/
+	position: relative;
+	list-style: none;
+	padding: 0;
+}
+.progress-bar{
+	width: 0%;
+	height: 1rem;
+	background: var(--blueGreen);
+	/*z-index: 100;*/
+	border-radius: 2rem;
+	position: absolute;
+	top: 50%;
+	left: 3%;
+	transform: translateY(-50%);
+	transition: width 1s ease;
+}
+.progress li{
+	width: 5rem;
+	height: 5rem;
+	background: var(--white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	border: 1px solid var(--blueGreen);
+	z-index: 10;
+}
+.progress li:first-child{
+	background: var(--blueGreen);
+	color: var(--white);
+}
+.body-content footer{
+	padding: 0rem 0rem 1rem 0rem;
+	/*border-top: 1px solid var(--blueGreen);*/
+	text-align: center;
+}
+.approved-requests .footer{
+	/*grid-area: f;*/
+	/*background: blue;*/
+	flex-grow: 0;
+}
+
+
+.feed-home section div img{
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.feed-home section:nth-child(2){
+	border-left: 1px solid var(--blueGreen);
+	/*background: yellow;*/
+	padding: 0rem;
+}
+/* End Home Screen =======>*/
+
+.feed-staff{
+	background: var(--white);
+	/*padding: 1rem;*/
+	/*z-index: 0;*/
+	display: none;
+}
+.feed-requestor{
+	background: var(--white);
+	/*padding: 1rem;*/
+	/*z-index: 0;*/
+	display: none;
+}
+.feed-request{
+	background: var(--white);
+	/*padding: 1rem;*/
+	/*z-index: 0;*/
+	display: none;
+}
+/*====================================*/
+/* ======== END HOME PAGE ============== */
+/*==================================*/
+
+
+
+
+/*=================================*/
+/* CONTENT FOOTER ================*/
+/*===============================*/
+.content-footer{
+	grid-area: f;
+	background: var(--white);
+}

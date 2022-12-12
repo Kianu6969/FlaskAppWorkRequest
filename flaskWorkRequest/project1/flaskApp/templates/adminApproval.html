@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+	
+	<main class="content-main">
+		<section class="content-main-header">
+			
+		</section>
+
+		<section class="content-main-body">
+			<span>Requestor : <i>{{ user2.requestorName }}</i></span>
+			<span>Request Title: <i>{{ user2.requestTitle }}</i></span>
+			<span>Type of Work: <i>{{ user2.requestedWork }}</i></span>
+			<span>Availability of Materials: <i>{{ user2.avilabilityOfMaterials }}</i></span>
+			<span>Status: <i>{{ user2.status }}</i></span>
+			<span>Priority Level: <i>{{ user2.priorityLevel }}</i></span>
+		</section>
+
+		<section class="content-main-footer">
+			<form method="POST">
+				{{ form.hidden_tag() }}
+				{{ form.submitApproval(id="submit-btn") }}
+			</form>
+		</section>
+		
+	</main>
+
+	<footer class="content-footer">Foot</footer>
+	
+
+{% endblock content %}
