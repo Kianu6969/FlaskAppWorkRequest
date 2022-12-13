@@ -52,12 +52,14 @@ requestsData = [
 
 
 # ADMINISTRATOR PAGE===================================
+
 @app.route('/adminPage', methods=['GET', 'POST']) 
 def adminPage():
 	formStaff = Staff_Registration()
 	formRequestor = Requestor_Registration()
 	workRequest = UserRequestForm.query.order_by(desc(UserRequestForm.id))
 	requestsCount = UserRequestForm.query.filter_by(status='unApproved').count()
+	pendingRequest = UserRequestForm.query.filter_by(status='unApproved')
 	staffCount = User.query.filter_by(userType='Staff').count()
 	# usersRequestor = User.query.filter_by(userType='Requestor')
 
@@ -91,7 +93,8 @@ def adminPage():
 	    					form=formRequestor, 
 	    					workRequest=workRequest, 
 	    					countReq=requestsCount,
-	    					countStaff=staffCount)
+	    					countStaff=staffCount,
+	    					pendingRequest=pendingRequest)
 
 # ADMIN APPROVAL PAGE - This is where the admin can approve a pending work request
 @app.route('/adminPage/requestApproval/<name>/<int:idNum>', methods=['POST', 'GET'])

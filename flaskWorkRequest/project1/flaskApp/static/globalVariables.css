@@ -14,6 +14,7 @@
 	--blue: #113F67; 
 	--lightBlue: #226597;
 	--blueGreen: #87C0CD;
+	--danger: #db6565;
 	--box-shadow-blueGreen: rgba(135, 192, 205,0.3);
 	--box-shadow: 5px 5px 10px 1px rgba(135, 192, 205,0.4), -5px -5px 10px 1px rgba(255, 255, 255,0.8);
 	--box-shadow-low: 5px 5px 10px 1px rgba(135, 192, 205,0.4);
@@ -26,6 +27,7 @@
 	--fn-medium: 1.5rem;
 	--border-radius: 2rem;
 
+	--img-danger: invert(83%) sepia(36%) saturate(5506%) hue-rotate(310deg) brightness(84%) contrast(105%);
 	--img-color-blue: invert(19%) sepia(21%) saturate(3410%) hue-rotate(178deg) brightness(94%) contrast(92%);
 	--img-color-lightBlue: invert(29%) sepia(81%) saturate(550%) hue-rotate(165deg) brightness(95%) contrast(88%);
 	--img-color-blueGreen: invert(76%) sepia(41%) saturate(278%) hue-rotate(144deg) brightness(91%) contrast(84%);

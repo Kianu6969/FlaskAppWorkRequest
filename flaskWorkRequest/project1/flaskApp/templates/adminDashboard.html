@@ -24,7 +24,7 @@
 
 		</section>
 
-		<!-- Main Feed -->
+		<!-- ====== MAIN FEED ====== -->
 		<section class="feed">
 			<div class="feed-home feed-nav">
 				<section class="info">
@@ -46,7 +46,7 @@
 						<section class="body-content">
 							<header>{{req.requestorName}}</header>
 							<main>
-								<h1>{{req.requestTitle}}</h1>
+								<h1><a href="">{{req.requestTitle}}</a></h1>
 								<body onload="progress()">
 									{% if req.status == 'Approved' %}
 									<ul class="progress">
@@ -82,10 +82,55 @@
 					<div class="footer"></div>
 				</section>
 			</div>
+			<!-- ====== END MAIN FEED ====== -->
 
-			<div class="feed-staff feed-nav">Staff</div>
-			<!-- <div class="feed-requestor feed-nav">requestor</div> -->
-			<div class="feed-request feed-nav">requests</div>
+			<!-- ====== STAFF FEED ======  -->
+			<div class="feed-staff feed-nav">
+				Staff
+			</div>
+			<!-- ====== END STAFF FEED======  -->
+
+			<!-- ====== REQUESTS FEED ====== -->
+			<div class="feed-request feed-nav">
+				<nav class="feed-request-nav">
+					<div>
+						<img class="nav-icon" src="{{ url_for('static', filename='img/requestor.svg') }}">
+					</div>
+					<div>
+						<img class="nav-icon" src="{{ url_for('static', filename='img/ongoing.svg') }}">
+					</div>
+				</nav>
+
+				<header class="feed-request-header">
+					<h1 class="title">Pending Requests</h1>
+				</header>
+
+				<main class="feed-request-main">
+					<section class="feed-request-main-body">
+						{% for n in pendingRequest %}
+							<div class="main-content">
+								<section class="main-content-header">{{ n.requestorName }}</section>
+								<section class="main-content-body">
+									<a href="">{{ n.requestTitle }}</a>
+								</section>
+								<section class="main-content-footer"></section>
+								<div class="feed-request-close-btn">
+									<a href="#">
+										<img src="{{ url_for('static', filename='img/close-btn2.svg') }}">
+									</a>
+									
+								</div>
+							</div>
+						{% endfor %}
+					</section>
+					
+				</main>
+
+				<footer class="feed-request-footer">
+					
+				</footer>
+			</div>
+			<!-- ====== END REQUESTS FEED======  -->
 		</section>
 
 	</main>

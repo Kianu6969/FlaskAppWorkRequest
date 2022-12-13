@@ -5,7 +5,7 @@ const showInfo_btn = document.querySelector('.show-info');
 
 const home = document.querySelector('.feed-home');
 const staff = document.querySelector('.feed-staff');
-const requestor = document.querySelector('.feed-requestor');
+// const requestor = document.querySelector('.feed-requestor');
 const request = document.querySelector('.feed-request');
 
 console.log('yeah');
