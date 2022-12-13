@@ -9,7 +9,7 @@ const staff = document.querySelector('.feed-staff');
 const request = document.querySelector('.feed-request');
 
 console.log('yeah');
-home_btn.style.background = "var(--blueGreen)";
+request_btn.style.background = "var(--blueGreen)";
 
 // =======================================
 // ======== THIS IS FOR NAVIGATION =======
@@ -91,7 +91,14 @@ function progress(){
 		console.log('innerText: ', percent.value);
 	}
 }
- 	
+
+// ==============================
+// This is for flash messaging
+// ==============================
+
+setTimeout(function(){
+	document.querySelector('.alert').style.display = 'none';
+}, 3000);
 
 
 

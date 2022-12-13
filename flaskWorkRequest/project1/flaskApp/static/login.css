@@ -15,7 +15,7 @@
 }
 .alert{
 	color: var(--white);
-	background: red;
+	background: var(--danger);
 	margin: 0rem 0rem 0rem 0rem;
 	padding: 0rem 2rem 0rem 2rem;
 	border-radius: 2rem;

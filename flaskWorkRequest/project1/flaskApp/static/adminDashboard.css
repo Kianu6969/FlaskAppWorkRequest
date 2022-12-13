@@ -139,7 +139,7 @@ body{
 .feed-home{
 	background: var(--white);
 	/*z-index: 10;*/
-	display: grid;
+	display: none;
 	grid-gap: 1rem;
 	grid-template-rows: 1fr;
 	grid-template-columns: 0.1fr 1fr;
@@ -352,7 +352,7 @@ body{
 	background: var(--white);
 	/*padding: 1rem;*/
 	/*z-index: 0;*/
-	display: none;
+	display: grid;
 	grid-template-columns: 0.1fr 1fr;
 	grid-template-rows: 0.1fr 1fr 0fr; 
 	grid-template-areas: 
@@ -422,12 +422,18 @@ body{
 	grid-area: h;
 	/*background: red;*/
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	border-bottom: 1px solid var(--blueGreen);
 }
-
+.alert-removed{
+	color: var(--white);
+	background: var(--danger); 
+	padding: 0.2rem 1rem 0.2rem 1rem;
+	margin: 0.2rem;
+	border-radius: 1rem;
+}
 /* Request Body */
 .feed-request main{
 	grid-area: m;

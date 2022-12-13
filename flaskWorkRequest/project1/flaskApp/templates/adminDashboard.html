@@ -7,9 +7,14 @@
 		<!-- Navigations -->
 		<section class="navbar">
 
+			<div class="nav-requests">
+				<img class='nav-icon' src="{{ url_for('static', filename='img/form.svg') }}">
+				<p>Requests</p>
+			</div>
+
 			<div class="nav-home">
 				<img class='nav-icon' src="{{ url_for('static', filename='img/home.svg') }}">
-				<p>Home</p>
+				<p>Accepted Requests</p>
 			</div>
 			
 			<div class="nav-staff">
@@ -17,10 +22,7 @@
 				<p>Work Staff</p>
 			</div>
 
-			<div class="nav-requests">
-				<img class='nav-icon' src="{{ url_for('static', filename='img/form.svg') }}">
-				<p>Requests</p>
-			</div>
+			
 
 		</section>
 
@@ -37,7 +39,7 @@
 				</section>
 				<section class="approved-requests">
 					<div class="header">
-						<h1>Ongoing Requests</h1>
+						<h1>Accepted Requests</h1>
 					</div>
 
 					<div class="body">
@@ -103,6 +105,15 @@
 
 				<header class="feed-request-header">
 					<h1 class="title">Pending Requests</h1>
+					{% with messages = get_flashed_messages() %} 
+		                {% if messages %}
+		                    {% for message in messages %}
+		                        <div class="alert alert-removed">
+		                            {{ message }}
+		                        </div>
+		                    {% endfor %}
+		                {% endif %}
+        			{% endwith %}
 				</header>
 
 				<main class="feed-request-main">
@@ -116,7 +127,7 @@
 									</section>
 									<section class="main-content-footer"></section>
 									<div class="feed-request-close-btn">
-										<a href="#">
+										<a href="{{url_for('reject', name=n.requestTitle, ids=n.requestFormId)}}">
 											<img src="{{ url_for('static', filename='img/close-btn2.svg') }}">
 										</a>
 										
