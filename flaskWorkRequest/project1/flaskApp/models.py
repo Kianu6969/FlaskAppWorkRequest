@@ -34,7 +34,7 @@ class UserRequestForm(db.Model):
 	requestedWork = db.Column(db.String(500), nullable=False)
 	roomNumber = db.Column(db.Integer(), nullable=False)
 	avilabilityOfMaterials = db.Column(db.String(10), nullable=False)
-	priorityLevel = db.Column(db.String(20), default='Low') # change this to integer in the future
+	priorityLevel = db.Column(db.Integer, default=0) # change this to integer in the future 0 - pending 1 - high 2 - medium 3 - low
 	status = db.Column(db.String(20), default='Pending')
 	requestFormId = db.Column(db.Integer, db.ForeignKey('user.id'))
 

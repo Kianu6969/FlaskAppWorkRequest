@@ -6,28 +6,49 @@
 	
 	<main class="content-main">
 		<section class="content-main-header">
-			
+			Approval Page
 		</section>
 
 		<section class="content-main-body">
-			<span>Requestor : <i>{{ user2.requestorName }}</i></span>
-			<span>Request Title: <i>{{ user2.requestTitle }}</i></span>
-			<span>Type of Work: <i>{{ user2.requestedWork }}</i></span>
-			<span>Availability of Materials: <i>{{ user2.avilabilityOfMaterials }}</i></span>
-			<span>Status: <i>{{ user2.status }}</i></span>
-			<span>Priority Level: <i>{{ user2.priorityLevel }}</i></span>
+			<div class="main-body-form">
+				<header>{{user2.requestorName}}</header>
+				<main>
+					<section>
+						<i>Work Requested</i>
+						<i>{{user2.requestTitle}}</i>
+					</section>
+
+					<section>
+						<i>Availability of Materials</i>
+						<i>{{user2.avilabilityOfMaterials}}</i>
+					</section>
+
+					<section>
+						<i>Status</i>
+						<i>{{user2.status}}</i>
+					</section>
+
+					<section>
+						<form method="POST" class="approval-form">
+							<p>Set Priority Level</p>
+							<p>Where 1 is the highest</p>
+							{{ form.hidden_tag() }}
+							{{ form.priorityLevel() }}
+							{{ form.submitApproval(id="approve-btn") }}
+						</form>
+					</section>
+				</main>
+				
+			</div>
 		</section>
 
 		<section class="content-main-footer">
-			<form method="POST">
-				{{ form.hidden_tag() }}
-				{{ form.submitApproval(id="submit-btn") }}
-			</form>
+			
 		</section>
 		
 	</main>
 
-	<footer class="content-footer">Foot</footer>
+	<!-- <footer class="content-footer" style="background: red;">Foot</footer> -->
 	
 
 {% endblock content %}

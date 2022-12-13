@@ -16,6 +16,7 @@ class Requestor_Registration(FlaskForm):
 
 # Work Request Approval
 class RequestApproval(FlaskForm):
+	priorityLevel = RadioField('Level', choices=[1,2,3])
 	submitApproval = SubmitField('Approve')
 
 # Registration Form Staff

@@ -72,9 +72,18 @@
 										<div class="progress-bar"></div>
 									</ul>
 									{% endif %}
+									<span class="body-content-status">{{req.status}}</span>
 								</body>
 							</main>
-							<footer>status: {{req.status}}</footer>
+							<footer>
+								{% if req.priorityLevel == '1' %}
+									<span>Priority Level: <i style="color: red">High</i></span>
+								{% elif req.priorityLevel == '2' %}
+									<span>Priority Level: <i style="color: orange">Medium</i></span>
+								{% elif req.priorityLevel == '3' %}
+									<span>Priority Level: <i style="color: green">Low</i></span>
+								{% endif %}
+							</footer>
 						</section>
 
 						{% endif %}
@@ -123,7 +132,7 @@
 								<div class="main-content">
 									<section class="main-content-header">{{ n.requestorName }}</section>
 									<section class="main-content-body">
-										<a href="">{{ n.requestTitle }}</a>
+										<a href="{{ url_for('adminPageApproval', name=n.requestorName, idNum=n.id) }}">{{ n.requestTitle }}</a>
 									</section>
 									<section class="main-content-footer"></section>
 									<div class="feed-request-close-btn">

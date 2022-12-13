@@ -57,9 +57,9 @@ requestsData = [
 def adminPage():
 	formStaff = Staff_Registration()
 	formRequestor = Requestor_Registration()
-	workRequest = UserRequestForm.query.order_by(desc(UserRequestForm.id))
-	requestsCount = UserRequestForm.query.filter_by(status='unApproved').count()
-	pendingRequest = UserRequestForm.query.filter_by(status='unApproved')
+	workRequest = UserRequestForm.query.order_by(UserRequestForm.priorityLevel)
+	requestsCount = UserRequestForm.query.filter_by(status='Pending').count()
+	pendingRequest = UserRequestForm.query.filter_by(status='Pending')
 	staffCount = User.query.filter_by(userType='Staff').count()
 	# usersRequestor = User.query.filter_by(userType='Requestor')
 
@@ -113,6 +113,7 @@ def adminPageApproval(name, idNum):
 	user = UserRequestForm.query.filter_by(requestorName=name_, id=idNum_).first()
 	if formApprove.submitApproval.data and formApprove.validate_on_submit():
 		user.status = 'Approved'
+		user.priorityLevel = formApprove.priorityLevel.data
 		db.session.commit()
 		return redirect(url_for('adminPage'))
 

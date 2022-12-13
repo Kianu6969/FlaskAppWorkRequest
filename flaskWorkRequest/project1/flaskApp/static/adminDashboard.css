@@ -261,6 +261,7 @@ body{
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 }
 .body-content main a{
 	color: var(--blue);
@@ -276,6 +277,19 @@ body{
 }
 .body-content footer{
 	border-top: 1px solid var(--blueGreen);
+	padding: 0rem 0rem 1rem 0rem;
+	/*border-top: 1px solid var(--blueGreen);*/
+	/*text-align: center;*/
+	padding-left: 1rem;
+	padding-top: 1rem;
+}
+.body-content footer span i{
+	font-style: normal;
+}
+.body-content-status{
+	font-size: var(--fn-medium);
+	font-weight: lighter;
+	text-align: center;
 }
 /* Progress Bar */
 .progress{
@@ -316,11 +330,7 @@ body{
 	background: var(--blueGreen);
 	color: var(--white);
 }
-.body-content footer{
-	padding: 0rem 0rem 1rem 0rem;
-	/*border-top: 1px solid var(--blueGreen);*/
-	text-align: center;
-}
+
 .approved-requests .footer{
 	/*grid-area: f;*/
 	/*background: blue;*/
