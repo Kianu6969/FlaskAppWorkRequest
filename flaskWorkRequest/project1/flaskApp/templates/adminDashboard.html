@@ -107,21 +107,25 @@
 
 				<main class="feed-request-main">
 					<section class="feed-request-main-body">
-						{% for n in pendingRequest %}
-							<div class="main-content">
-								<section class="main-content-header">{{ n.requestorName }}</section>
-								<section class="main-content-body">
-									<a href="">{{ n.requestTitle }}</a>
-								</section>
-								<section class="main-content-footer"></section>
-								<div class="feed-request-close-btn">
-									<a href="#">
-										<img src="{{ url_for('static', filename='img/close-btn2.svg') }}">
-									</a>
-									
+						{% if countReq != 0 %}
+							{% for n in pendingRequest %}
+								<div class="main-content">
+									<section class="main-content-header">{{ n.requestorName }}</section>
+									<section class="main-content-body">
+										<a href="">{{ n.requestTitle }}</a>
+									</section>
+									<section class="main-content-footer"></section>
+									<div class="feed-request-close-btn">
+										<a href="#">
+											<img src="{{ url_for('static', filename='img/close-btn2.svg') }}">
+										</a>
+										
+									</div>
 								</div>
-							</div>
-						{% endfor %}
+							{% endfor %}
+						{% else %}
+							<h1>No Pending Requests</h1>
+						{% endif %}
 					</section>
 					
 				</main>

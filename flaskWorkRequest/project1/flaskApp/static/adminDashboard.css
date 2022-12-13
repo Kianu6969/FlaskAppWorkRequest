@@ -448,7 +448,7 @@ body{
 	grid-template-columns: 1fr;
 	grid-template-rows: 0fr 1fr 0fr;
 	margin-top: 1rem; 
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	padding: 0rem;
 	border: 1px solid var(--blueGreen);
 	box-shadow: 10px 10px var(--blueGreen); 
