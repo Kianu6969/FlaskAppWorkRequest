@@ -96,10 +96,10 @@
 			<div class="feed-request feed-nav">
 				<nav class="feed-request-nav">
 					<div>
-						<img class="nav-icon" src="{{ url_for('static', filename='img/requestor.svg') }}">
+						<img class="nav-icon add-req" src="{{ url_for('static', filename='img/requestor.svg') }}">
 					</div>
 					<div>
-						<img class="nav-icon" src="{{ url_for('static', filename='img/ongoing.svg') }}">
+						<img class="nav-icon add-staff" src="{{ url_for('static', filename='img/ongoing.svg') }}">
 					</div>
 				</nav>
 
@@ -138,6 +138,8 @@
 							<h1>No Pending Requests</h1>
 						{% endif %}
 					</section>
+
+					
 					
 				</main>
 
@@ -153,5 +155,35 @@
 	<footer class="content-footer">
 			foot
 	</footer>
+<!-- this is for the modal requestor -->
+	<div class="modal-requestor modal">
+		<div class="modal-content">
+			<form method='POST' class="form-add-requestor">
+				<h1>Add Requestor</h1>
+				{{ form.hidden_tag() }}
+				{{ form.userName(class="username", placeholder="Enter Department") }}
+				{{ form.passWord(class="password", placeholder="Enter Password") }}
+				{{ form.submitReq(id="submit-btn") }}
+			</form>
+			<div class="close-btn-modal">
+				<img src="{{ url_for('static', filename='img/close-btn2.svg') }}">
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-staff modal">
+		<div class="modal-content-staff">
+			<form method='POST' class="form-add-staff">
+				<h1>Add Work Staff</h1>
+				{{ form2.hidden_tag() }}
+				{{ form2.userName(class="username-staff", placeholder="Enter Staff Name") }}
+				{{ form2.passWord(class="password-staff", placeholder="Enter Password") }}
+				{{ form2.submitStaff(id="submit-btn") }}
+			</form>
+			<div class="close-btn-modal-staff">
+				<img src="{{ url_for('static', filename='img/close-btn2.svg') }}">
+			</div>
+		</div>
+	</div>
 
 {% endblock content %}

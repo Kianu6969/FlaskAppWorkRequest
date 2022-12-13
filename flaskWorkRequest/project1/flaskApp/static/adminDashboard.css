@@ -348,6 +348,135 @@ body{
 }
 
 /* Requests Screen============> */
+/* For modal Purposes */
+
+/* requestor Modal */
+.modal-requestor{
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background: rgba(var(--blueGreenRGB),.5);
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+}
+.modal-requestor .modal-content{
+	position: relative;
+	background: var(--white);
+	padding: 5rem;
+	border-radius: 2rem;
+}
+.modal-requestor .modal-content form{
+	color: var(--blue);
+	display: flex;
+	flex-direction: column;
+}
+.modal-requestor .modal-content form h1{
+	font-weight: lighter;
+	margin-bottom: 1rem;
+}
+.modal-requestor .modal-content form input{
+	font-size: var(--fn-regular);
+	box-shadow: var(--box-shadow);
+	background: var(--white);
+	color: var(--blue);
+	margin-bottom: 1rem;
+}
+#submit-btn{
+	background: var(--blue);
+	color: var(--white);
+}
+#submit-btn:hover{
+	cursor: pointer;
+	background-color: var(--blueGreen);
+}
+.close-btn-modal img{
+	width: 3rem;
+	height: 3rem;
+	filter: var(--img-color-blue);
+	cursor: pointer;
+}
+.close-btn-modal img:hover{
+	width: 3rem;
+	height: 3rem;
+	filter: var(--img-danger);
+	cursor: pointer;
+}
+.close-btn-modal{
+	width: 3rem;
+	height: 3rem;
+	position: absolute;
+	top: 1%;
+	left: 92%;
+	transform: translateX(-50%);
+}
+/* modal staff */
+.modal-staff{
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background: rgba(var(--blueGreenRGB),.5);
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+}
+.modal-staff .modal-content-staff{
+	position: relative;
+	background: var(--white);
+	padding: 5rem;
+	border-radius: 2rem;
+}
+.modal-staff .modal-content-staff form{
+	color: var(--blue);
+	display: flex;
+	flex-direction: column;
+}
+.modal-staff .modal-content-staff form h1{
+	font-weight: lighter;
+	margin-bottom: 1rem;
+}
+.modal-staff .modal-content-staff form input{
+	font-size: var(--fn-regular);
+	box-shadow: var(--box-shadow);
+	background: var(--white);
+	color: var(--blue);
+	margin-bottom: 1rem;
+}
+#submit-btn{
+	background: var(--blue);
+	color: var(--white);
+}
+#submit-btn:hover{
+	cursor: pointer;
+	background-color: var(--blueGreen);
+}
+.close-btn-modal-staff img{
+	width: 3rem;
+	height: 3rem;
+	filter: var(--img-color-blue);
+	cursor: pointer;
+}
+.close-btn-modal-staff img:hover{
+	width: 3rem;
+	height: 3rem;
+	filter: var(--img-danger);
+	cursor: pointer;
+}
+.close-btn-modal-staff{
+	width: 3rem;
+	height: 3rem;
+	position: absolute;
+	top: 1%;
+	left: 92%;
+	transform: translateX(-50%);
+}
+/* END ===== For modal Purposes =====*/
 .feed-request{
 	background: var(--white);
 	/*padding: 1rem;*/

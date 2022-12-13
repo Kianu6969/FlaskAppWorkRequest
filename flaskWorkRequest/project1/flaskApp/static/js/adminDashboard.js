@@ -101,5 +101,36 @@ setTimeout(function(){
 }, 3000);
 
 
+// =====================
+// ==== Modal Pop Up ===
+// =====================
+
+// Requestor modal
+var modalBtn = document.querySelector('.add-req');
+var modal = document.querySelector('.modal-requestor');
+var modalclose = document.querySelector('.close-btn-modal')
+
+modalBtn.addEventListener('click', function(){
+	modal.style.visibility = 'visible';
+});
+
+modalclose.addEventListener('click', function(){
+	modal.style.visibility = 'hidden';
+});
+
+// Staff modal
+var modalBtnStaff = document.querySelector('.add-staff');
+var modalStaff = document.querySelector('.modal-staff');
+var modalcloseStaff = document.querySelector('.close-btn-modal-staff')
+
+modalBtnStaff.addEventListener('click', function(){
+	modalStaff.style.visibility = 'visible';
+});
+
+modalcloseStaff.addEventListener('click', function(){
+	modalStaff.style.visibility = 'hidden';
+});
+
+
 
 
