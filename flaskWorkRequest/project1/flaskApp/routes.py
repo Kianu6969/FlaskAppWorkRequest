@@ -101,7 +101,7 @@ def reject(name, ids):
 	_name = name
 	_id = ids
 	reqFormRemoved = UserRequestForm.query.filter_by(requestTitle=_name).first()
-	flash(f'{reqFormRemoved.requestorName} : {reqFormRemoved.requestTitle} Removed')
+	flash(f'{reqFormRemoved.requestorName} : {reqFormRemoved.requestTitle} - Removed')
 	return redirect(url_for('adminPage'))
 
 # ADMIN APPROVAL PAGE - This is where the admin can approve a pending work request
