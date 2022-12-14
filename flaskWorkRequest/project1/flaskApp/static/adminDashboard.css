@@ -282,9 +282,12 @@ body{
 	/*text-align: center;*/
 	padding-left: 1rem;
 	padding-top: 1rem;
+	display: flex;
+	flex-direction: column;
 }
 .body-content footer span i{
 	font-style: normal;
+	font-weight: bold;
 }
 .body-content-status{
 	font-size: var(--fn-medium);

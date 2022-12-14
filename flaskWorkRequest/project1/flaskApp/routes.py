@@ -5,6 +5,7 @@ from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm
 from flaskApp.models import User, UserRequestForm # this is our database model
 from flask_login import login_user, current_user, logout_user # these are for handling sessions
 from sqlalchemy import desc
+from datetime import datetime, timedelta
 
 
 # dummy data
@@ -111,7 +112,20 @@ def adminPageApproval(name, idNum):
 	idNum_ = idNum
 	formApprove = RequestApproval()
 	user = UserRequestForm.query.filter_by(requestorName=name_, id=idNum_).first()
+	approvedDate = datetime.now()
 	if formApprove.submitApproval.data and formApprove.validate_on_submit():
+		# we now set the date of request on approval time when the admin approves it
+		
+		# set different time limits based on priority levels
+		if formApprove.priorityLevel.data == '1':
+			user.dateLimit = datetime.now() + timedelta(days=3)
+
+		elif formApprove.priorityLevel.data == '2':
+			user.dateLimit = datetime.now() + timedelta(days=14)
+
+		elif formApprove.priorityLevel.data == '3':
+			user.dateLimit = datetime.now() + timedelta(days=30)
+
 		user.status = 'Approved'
 		user.priorityLevel = formApprove.priorityLevel.data
 		db.session.commit()
@@ -166,7 +180,7 @@ def requestorPage():
 	userRequestForms = UserRequestForm.query.filter_by(requestFormId=user.id).order_by(desc(UserRequestForm.id))
 
 	if form.submit.data and form.validate_on_submit():
-		requestForm = UserRequestForm(requestorName=current_user.userName, requestedWork=form.workOrder.data, roomNumber=form.requestRoomNumber.data, avilabilityOfMaterials=form.materialAvailability.data,requestTitle = form.requestTitle.data, user=user)
+		requestForm = UserRequestForm(requestorName=current_user.userName, requestedWork=form.workOrder.data, roomNumber=form.requestRoomNumber.data, avilabilityOfMaterials=form.materialAvailability.data,requestTitle = form.requestTitle.data, user=user, dateApproved=datetime.now())
 		db.session.add(requestForm)
 		db.session.commit()
 	# user = User()

@@ -2,6 +2,7 @@ from datetime import datetime
 from flaskApp import db, loginManager
 from flask_login import UserMixin
 from flaskApp.forms import LoginForm
+from sqlalchemy.types import DateTime
 
 @loginManager.user_loader
 def loadUser(userId):
@@ -36,6 +37,8 @@ class UserRequestForm(db.Model):
 	avilabilityOfMaterials = db.Column(db.String(10), nullable=False)
 	priorityLevel = db.Column(db.Integer, default=0) # change this to integer in the future 0 - pending 1 - high 2 - medium 3 - low
 	status = db.Column(db.String(20), default='Pending')
+	dateApproved = db.Column(DateTime, default=datetime.now(), nullable=False)
+	dateLimit = db.Column(DateTime, default=datetime.now(), nullable=False)
 	requestFormId = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 	def __repr__(self): # this will print 

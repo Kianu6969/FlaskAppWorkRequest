@@ -76,13 +76,15 @@
 								</body>
 							</main>
 							<footer>
-								{% if req.priorityLevel == '1' %}
+								{% if req.priorityLevel == 1 %}
 									<span>Priority Level: <i style="color: red">High</i></span>
-								{% elif req.priorityLevel == '2' %}
+								{% elif req.priorityLevel == 2 %}
 									<span>Priority Level: <i style="color: orange">Medium</i></span>
-								{% elif req.priorityLevel == '3' %}
+								{% elif req.priorityLevel == 3 %}
 									<span>Priority Level: <i style="color: green">Low</i></span>
 								{% endif %}
+								<span>Date Approved: <i>{{ req.dateApproved.strftime("%B %d, %Y") }}</i></span>
+								<span>Time Limit: <i>{{ req.dateLimit.strftime("%B %d, %Y")  }}</i></span>
 							</footer>
 						</section>
 
@@ -134,7 +136,7 @@
 									<section class="main-content-body">
 										<a href="{{ url_for('adminPageApproval', name=n.requestorName, idNum=n.id) }}">{{ n.requestTitle }}</a>
 									</section>
-									<section class="main-content-footer"></section>
+									<section class="main-content-footer">Date: {{ n.dateApproved.strftime("%B %d, %Y") }}</section>
 									<div class="feed-request-close-btn">
 										<a href="{{url_for('reject', name=n.requestTitle, ids=n.requestFormId)}}">
 											<img src="{{ url_for('static', filename='img/close-btn2.svg') }}">
