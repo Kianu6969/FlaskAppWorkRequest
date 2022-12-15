@@ -66,6 +66,12 @@
 							<p>Status: </p> 
 							<p id="status">{{ userForms.status }}</p>
 						</span>
+
+						<span class="dateApp">
+							<p>Date Work Time: </p> 
+							<p id="status" style="font-weight: bold;">{{ userForms.dateApproved.strftime("%B %d, %Y") }} - {{ userForms.dateLimit.strftime("%B %d, %Y") }}</p>
+						</span>
+
 					</footer>
 				</div>
 			{% endif %}

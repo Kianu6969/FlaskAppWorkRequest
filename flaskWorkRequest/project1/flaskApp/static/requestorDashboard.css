@@ -90,6 +90,13 @@ body{
 	height: 1rem;
 	padding: 1rem;
 }
+.dateApp{
+	display: flex;
+	flex-direction: row;
+}
+.dateApp p:nth-child(2){
+	margin-left: 0.3rem;
+}
 .content-main-body-requests{
 	/*background-color: pink;*/
 	margin-bottom: 1rem;

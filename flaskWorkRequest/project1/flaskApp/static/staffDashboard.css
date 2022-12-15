@@ -66,6 +66,7 @@ body{
 .content-main{
 	grid-area: m;
 	border: 1px solid var(--blueGreen);
+	color: var(--blue);
 }
 
 

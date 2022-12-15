@@ -83,9 +83,9 @@
 								{% elif req.priorityLevel == 3 %}
 									<span>Priority Level: <i style="color: green">Low</i></span>
 								{% endif %}
-								<span>Date Approved: <i>{{ req.dateApproved.strftime("%B %d, %Y") }}</i></span>
-								<span>Time Limit: <i>{{ req.dateLimit.strftime("%B %d, %Y")  }}</i></span>
+								<span>Date Work Time: <i>{{ req.dateApproved.strftime("%B %d, %Y") }} - {{ req.dateLimit.strftime("%B %d, %Y")  }}</i></span>
 								<span>Assigned Staff: <a href="#">Name</a></span>
+								<span>Work Location: <i>{{ req.roomNumber }}</i></span>
 							</footer>
 						</section>
 
@@ -182,7 +182,7 @@
 			</div>
 		</div>
 	</div>
-
+<!-- this is for the modal staff -->
 	<div class="modal-staff modal">
 		<div class="modal-content-staff">
 			<form method='POST' class="form-add-staff">
@@ -190,6 +190,9 @@
 				{{ form2.hidden_tag() }}
 				{{ form2.userName(class="username-staff", placeholder="Enter Staff Name") }}
 				{{ form2.passWord(class="password-staff", placeholder="Enter Password") }}
+				{{ form2.age(class='age', placeholder='Enter Age') }}
+				{{ form2.occupation(class='occupation', placeholder='Enter Occupation') }}
+				{{ form2.gender(class=gender) }}
 				{{ form2.submitStaff(id="submit-btn") }}
 			</form>
 			<div class="close-btn-modal-staff">

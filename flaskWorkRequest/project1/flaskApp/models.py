@@ -21,9 +21,35 @@ class User(db.Model, UserMixin):
 
 	# this will be generated in the UserRequestform Table
 	requestForm = db.relationship('UserRequestForm', backref='user') 
+	userStaffExtension = db.relationship('StaffExtension', backref='staffExtension', uselist=False)
 
 	def __repr__(self): # this will print 
 		return f"User({self.id}, {self.userName}, {self.userType})"
+
+# For User Staffs
+class StaffExtension(db.Model):
+	__tablename__ = 'userstaff'
+	id = db.Column(db.Integer, primary_key=True)
+	staffId = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True)
+	staffName = db.Column(db.String(20), nullable=False)
+	staffAge = db.Column(db.String(20), nullable=False)
+	staffGender = db.Column(db.String(20), nullable=False)
+	staffOccupation = db.Column(db.String(20), nullable=False)
+	staffRating = db.Column(db.Integer, default=0)
+	staffComments = db.relationship('StaffExtensionComment', backref='staffComment')
+
+	def __repr__(self): # this will print 
+		return f"User({self.id}, {self.staffId}, {self.staffName})"
+
+# Staff Comments
+class StaffExtensionComment(db.Model):
+	__tablename__ = 'staffcomment'
+	id = db.Column(db.Integer, primary_key=True)
+	commentId = db.Column(db.Integer, db.ForeignKey('userstaff.id'), unique=True)
+	comment = db.Column(db.String(500))
+
+	def __repr__(self): # this will print 
+		return f"User({self.id}, {self.commentId}, {self.comment})"
 
 # Requestor Form table for UserRequestors
 class UserRequestForm(db.Model):

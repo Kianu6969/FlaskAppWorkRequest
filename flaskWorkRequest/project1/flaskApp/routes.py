@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, redirect
 from flaskApp import app, db, bcrypt
  # this is our forms
 from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval
-from flaskApp.models import User, UserRequestForm # this is our database model
+from flaskApp.models import User, UserRequestForm, StaffExtension # this is our database model
 from flask_login import login_user, current_user, logout_user # these are for handling sessions
 from sqlalchemy import desc
 from datetime import datetime, timedelta
@@ -43,7 +43,9 @@ def adminPage():
 	elif formStaff.submitStaff.data and formStaff.validate_on_submit():
 		hashed_pass = bcrypt.generate_password_hash(formStaff.passWord.data).decode('utf-8')
 		userStaff = User(userName=formStaff.userName.data, passWord=hashed_pass, userType='Staff')
+		staffExtend = StaffExtension(staffName=formStaff.userName.data, staffExtension=userStaff, staffAge = formStaff.age.data, staffGender = formStaff.gender.data, staffOccupation = formStaff.occupation.data)
 		db.session.add(userStaff)
+		db.session.add(staffExtend)
 		db.session.commit()
 		flash(f'Account Staff Created for {formStaff.userName.data}!')
 		return redirect(url_for('adminPage'))
@@ -156,7 +158,10 @@ def requestorPage():
 def staffPage():
 	if current_user.is_authenticated == False:
 		return redirect(url_for('loginPage'))
-	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName)
+
+	user = StaffExtension.query.filter_by(staffId=current_user.id).first()
+
+	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user)
 
 
 # LOGOUT PAGE (this will logout the current user session)===================

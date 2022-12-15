@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, RadioField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, RadioField, IntegerField
 from wtforms.validators import DataRequired, Length, Email
 
 # Registration Form Requestor
@@ -22,12 +22,18 @@ class RequestApproval(FlaskForm):
 # Registration Form Staff
 class Staff_Registration(FlaskForm):
 
-	userName = StringField('departmentName', 
+	userName = StringField('Staff Name', 
 							validators=[DataRequired(),
 							Length(min=2, max=20)])
 
-	passWord = PasswordField('password',
-							validators=[DataRequired()])
+	age = IntegerField('Age', validators=[DataRequired()])
+	
+	gender = RadioField('Gender', choices=['Male','Female'])
+	occupation = StringField('Occupation', 
+							validators=[DataRequired(),
+							Length(min=2, max=20)])
+
+	passWord = PasswordField('password', validators=[DataRequired()])
 
 	submitStaff = SubmitField('Register')
 
