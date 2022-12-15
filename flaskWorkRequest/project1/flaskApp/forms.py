@@ -45,7 +45,6 @@ class LoginForm(FlaskForm):
 	submit = SubmitField('Login')
 
 # Requestor Work Request Form
-
 class WorkRequestForm(FlaskForm):
 
 	requestTitle = StringField('requestTitle', validators=[DataRequired(), Length(min=5, max=100)])

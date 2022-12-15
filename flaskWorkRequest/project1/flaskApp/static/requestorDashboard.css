@@ -98,7 +98,7 @@ body{
 	/*padding: 1rem*/
 	border: 1px solid var(--blueGreen);
 	box-shadow: 10px 10px var(--blueGreen);
-	margin: 0rem 3rem 0rem 3rem
+	margin: 0rem 3rem 2rem 3rem
 
 }
 .content-main-body-requests header{
@@ -211,6 +211,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	overflow: scroll;
+	height: 1rem;
 }
 .content-side-right-items{
 	border: 1px solid var(--blueGreen);

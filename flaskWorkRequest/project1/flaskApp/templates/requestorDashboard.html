@@ -136,13 +136,14 @@
 	<section class="content-side-right">
 		<header>Pending Requests</header>
 		<main>
-				{% for userForms in countRequests %}
-					<span class="content-side-right-items">
-						<div class="header-item">{{ userForms.requestorName }}</div>
-						<div class="body-item"><a href="#">{{ userForms.requestTitle }}</a></div>
-						<div class="footer-item">Status: {{ userForms.status }}</div>
-					</span>
-					
+				{% for userForms in userForm %}
+					{% if userForms.status == 'Pending' %}
+						<span class="content-side-right-items">
+							<div class="header-item">{{ userForms.requestorName }}</div>
+							<div class="body-item"><a href="#">{{ userForms.requestTitle }}</a></div>
+							<div class="footer-item">Status: {{ userForms.status }}</div>
+						</span>
+					{% endif %}
 				{% endfor %}
 		</main>
 		<footer></footer>

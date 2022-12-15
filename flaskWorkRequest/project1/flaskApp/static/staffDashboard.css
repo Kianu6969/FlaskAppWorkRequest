@@ -1,74 +1,103 @@
 @import 'globalVariables.css';
 
+
+
 body{
-	background: var(--black);
-	color: var(--white);
+	background: var(--white);
 }
 
-/* CONTAINER PROPERTIES */
+
 .container{
-	
-	height: 100vh;
+	margin: 0;
 	display: grid;
-	grid-template-columns: 1fr 1.7fr 1fr;
-	grid-template-rows: 0fr 1fr 0.05fr;
-	grid-gap: 1rem;
+	height: 100vh;
+
+	grid-template-columns: 0.2fr 1fr 0.5fr;
+	grid-template-rows: 0fr 1fr 0.02fr;
 
 	grid-template-areas: 
 			'h h h'
 			'l m r'
 			'f f f';
 }
-.container *{
-	/*box-shadow: 1px 1px 3px 0px var(--shadow);*/
-	padding: var(--fn-regular);
-	/*text-align: center;*/
-}
-.alert{
-	font-size: var(--fn-regular);
-	padding: 0;
-	margin-bottom: 0;
-	background: var(--green);
-	border-radius: var(--fn-regular);
-	color: var(--white);
-}
-/*===========================================*/
-/* HEADER ==================================*/
-/*=========================================*/
-.content-header .header-title a{
-	text-decoration: none;
-	color: var(--white);
-}
+/*=================================*/
+/* CONTENT HEADER ================*/
+/*===============================*/
 .content-header{
-	padding: 0;
 	grid-area: h;
-	box-shadow: 1px 1px 3px 0px var(--shadow);
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
 	align-items: center;
+	padding: var(--fn-small);
 }
+
 .img-box{
 	flex-grow: 0;
-	padding: 0;
 }
 .header-title{
-	flex-grow: 2;
-	padding: 0;
+	flex-grow: 1;
+	margin-left: 1rem;
+	
+}
+.header-title a{
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
 }
 .header-user{
-	flex-grow: 2;
-	font-size: var(--fn-medium);
-	padding: 0;
-}
-#logo{
-	flex-grow: 0;
-	padding: 0;
-	filter: var(--img-color-white);
-	width: var(--fn-large);
-	height: var(--fn-large);
-}
-.header-profile{
 	flex-grow: 1;
-	padding: 0;
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+
+.header-profile{
+	flex-grow: 0.3;
+}
+.header-profile a{
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+
+/*=====================*/
+/*====== Content Main ===*/
+/*====================*/
+.content-main{
+	grid-area: m;
+	border: 1px solid var(--blueGreen);
+}
+
+
+
+/*=====================*/
+/*====== Content Left ===*/
+/*====================*/
+.content-left{
+	grid-area: l;
+	border: 1px solid var(--blueGreen);
+}
+
+
+
+
+
+/*=====================*/
+/*====== Content Right ===*/
+/*====================*/
+.content-right{
+	grid-area: r;
+	border: 1px solid var(--blueGreen);
+}
+
+
+
+
+
+/*=====================*/
+/*====== Content Foot ===*/
+/*====================*/
+.content-foot{
+	grid-area: f;
+	border: 1px solid var(--blueGreen);
 }

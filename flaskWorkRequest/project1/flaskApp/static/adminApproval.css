@@ -156,7 +156,7 @@ body{
 	display: block;
 	text-align: center;
 }
-.content-main-body div main section:nth-child(4) ul{
+.content-main-body div main section:nth-child(5) ul{
 	list-style: none;
 	display: flex;
 	flex-direction: row;
@@ -164,7 +164,7 @@ body{
 	/*background-color: red;*/
 	margin: 0rem 5rem 0rem 3rem;
 }
-.content-main-body div main section:nth-child(4) ul li{
+.content-main-body div main section:nth-child(5) ul li{
 	font-size: 1.2rem;
 }
 /*========================*/
