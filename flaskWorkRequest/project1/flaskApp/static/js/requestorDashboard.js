@@ -30,3 +30,16 @@ function progress(){
 		console.log('innerText: ', percent.value);
 	}
 }
+
+// For modals
+var modalBtn = document.querySelector('.request-work-btn');
+var modal = document.querySelector('.modal-popup-request-form');
+var closeBtn = document.querySelector('.request-form-close');
+
+modalBtn.addEventListener('click', function(){
+	modal.style.display = 'flex';
+});
+
+closeBtn.addEventListener('click', function(){
+	modal.style.display = 'none';
+});

@@ -8,44 +8,6 @@ from sqlalchemy import desc
 from datetime import datetime, timedelta
 
 
-# dummy data
-requestsData = [
-	{
-		'department': 'CCSIT',
-		'workRequest': 'Cleaning',
-		'date': 'October 15, 2022',
-		'level': 'High'
-	},
-	{
-		'department': 'OSAS',
-		'workRequest': 'Plumbing',
-		'date': 'September 17, 2022'
-	},
-	{
-		'department': 'Lab 1',
-		'workRequest': 'Computer Maintenance',
-		'date': 'September 07, 2022',
-		'level': 'High'
-	},
-	{
-		'department': 'Office 2',
-		'workRequest': 'Wifi Installation',
-		'date': 'October 25, 2022',
-		'level': 'Medium'
-	},
-	{
-		'department': 'MSIT',
-		'workRequest': 'Aircondition Repair',
-		'date': 'November 1, 2022',
-		'level': 'Low'
-	},
-	{
-		'department': 'Oracle',
-		'workRequest': 'Tiles Repair',
-		'date': 'October 28, 2022',
-		'level': 'High'
-	}
-]
 # no idea what this does
 # @app.shell_context_processor
 # def make_shell_context():
@@ -87,7 +49,6 @@ def adminPage():
 		return redirect(url_for('adminPage'))
 
 	return render_template('adminDashboard.html',
-							requestsData=requestsData,
 	  						title='Admin Page',
 	  						user=current_user.userName, 
 	  						form2=formStaff,
@@ -102,6 +63,8 @@ def reject(name, ids):
 	_name = name
 	_id = ids
 	reqFormRemoved = UserRequestForm.query.filter_by(requestTitle=_name).first()
+	db.session.delete(reqFormRemoved)
+	db.session.commit()
 	flash(f'{reqFormRemoved.requestorName} : {reqFormRemoved.requestTitle} - Removed')
 	return redirect(url_for('adminPage'))
 
@@ -177,6 +140,7 @@ def requestorPage():
 		return redirect(url_for('loginPage'))
 	form = WorkRequestForm()
 	user = User.query.filter_by(userName=current_user.userName).first()
+	countRequests = UserRequestForm.query.filter_by(requestorName=current_user.userName).count()
 	userRequestForms = UserRequestForm.query.filter_by(requestFormId=user.id).order_by(desc(UserRequestForm.id))
 
 	if form.submit.data and form.validate_on_submit():
@@ -185,7 +149,7 @@ def requestorPage():
 		db.session.commit()
 	# user = User()
 	# user.query.get(1).userName
-	return render_template('requestorDashboard.html', title='Requestor Page', user=current_user.userName, form=form, userFrom=userRequestForms)
+	return render_template('requestorDashboard.html', title='Requestor Page', user=current_user.userName, form=form, userForm=userRequestForms, count=countRequests)
 
 # STAFF PAGE===============================
 @app.route('/staffPage', methods=['GET', 'POST'])

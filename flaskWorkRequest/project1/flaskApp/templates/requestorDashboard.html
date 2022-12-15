@@ -11,7 +11,7 @@
 		<!-- Main-Body -->
 		<div class="content-main-body">
 			<!-- Request Status  -->
-			{% for userForms in userFrom %}
+			{% for userForms in userForm %}
 			{% if userForms.status != 'Pending' %}
 				<div class="content-main-body-requests">
 					<header>
@@ -58,11 +58,11 @@
 							<span>Priority Level: <i style="color:green;">Low</i></span>
 
 						{% endif %}
-						<span>
-							<p>Assigned: </p> 
+						<span class="assigned-staff">
+							<p>Assigned Staff: </p> 
 							<a href="">Mr. Unknown</a>
 						</span>
-						<span>
+						<span class="status">
 							<p>Status: </p> 
 							<p id="status">{{ userForms.status }}</p>
 						</span>
@@ -89,7 +89,7 @@
 						<fieldset class="request-form-header">
 							<legend>Name of Request</legend>
 							{{ form.requestTitle(class='requestTitle',placeholder='Enter Title') }}
-							{{ form.requestRoomNumber(class='requestRoomNumber',placeholder='Enter Room Number') }}
+							{{ form.requestRoomNumber(class='requestRoomNumber',placeholder='Enter Work Location') }}
 						</fieldset>
 
 						<fieldset class="request-choices">
@@ -134,17 +134,18 @@
 
 	<!-- RIGHT SIDE CONTENT -->
 	<section class="content-side-right">
-<!-- 
-		<header class="content-side-right-header">
-			Pending Requests
-		</header>
-
-		<main class="content-side-right-main">
+		<header>Pending Requests</header>
+		<main>
+				{% for userForms in countRequests %}
+					<span class="content-side-right-items">
+						<div class="header-item">{{ userForms.requestorName }}</div>
+						<div class="body-item"><a href="#">{{ userForms.requestTitle }}</a></div>
+						<div class="footer-item">Status: {{ userForms.status }}</div>
+					</span>
+					
+				{% endfor %}
 		</main>
-
-		<footer class="content-side-right-footer">
-			Footer
-		</footer> -->
+		<footer></footer>
 
 	</section>
 
