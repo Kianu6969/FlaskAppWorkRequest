@@ -12,32 +12,63 @@
 		<div class="content-main-body">
 			<!-- Request Status  -->
 			{% for userForms in userFrom %}
-			<div class="content-main-body-requests">
-				<header>
-					{{ userForms.requestTitle }}
-				</header>
+			{% if userForms.status != 'Pending' %}
+				<div class="content-main-body-requests">
+					<header>
+						{{ userForms.requestTitle }}
+					</header>
 
-				<main>
-					<section class="approved"><i class="material-icons">check</i></section>
+					<main>
+						<body onload="progress()">
+								{% if userForms.status == 'Approved' %}
+								<ul class="progress">
+									<li class="approved material-icons" value="0%">check</li>
+									<li class="ongoing material-icons">close</li>
+									<li class="finished material-icons">close</li>
+									<div class="progress-bar"></div>
+								</ul>
+								{% elif userForms.status == 'OnGoing'%}
+								<ul class="progress">
+									<li class="approved material-icons" value="50%">check</li>
+									<li class="ongoing material-icons">close</li>
+									<li class="finished material-icons">close</li>
+									<div class="progress-bar"></div>
+								</ul>
+								{% elif userForms.status == 'Finished'%}
+								<ul class="progress">
+									<li class="approved material-icons" value="90%">check</li>
+									<li class="ongoing material-icons">close</li>
+									<li class="finished material-icons">close</li>
+									<div class="progress-bar"></div>
+								</ul>
+								{% endif %}
+						</body>
+						
+					</main>
+					
 
-					<section class="onGoing"><i class="material-icons">check</i></section>
+					<footer>
+						{% if userForms.priorityLevel == 1  %}
+							<span>Priority Level: <i style="color:red;">High</i></span>
 
-					<section class="finished"><i class="material-icons">check</i></section>
-				</main>
-				
+						{% elif userForms.priorityLevel == 2  %}
+							<span>Priority Level: <i style="color:orange;">Medium</i></span>
 
-				<footer>
-					<span>Priority Level: {{ userForms.priorityLevel }}</span>
-					<span>
-						<p>Assigned: </p> 
-						<a href="">Mr. Unknown</a>
-					</span>
-					<span>
-						<p>Status: </p> 
-						<p id="status">{{ userForms.status }}</p>
-					</span>
-				</footer>
-			</div>
+						{% elif userForms.priorityLevel == 3  %}
+							<span>Priority Level: <i style="color:green;">Low</i></span>
+
+						{% endif %}
+						<span>
+							<p>Assigned: </p> 
+							<a href="">Mr. Unknown</a>
+						</span>
+						<span>
+							<p>Status: </p> 
+							<p id="status">{{ userForms.status }}</p>
+						</span>
+					</footer>
+				</div>
+			{% endif %}
 			{% endfor %}
 		</div> <!-- End Main-Body -->
 
