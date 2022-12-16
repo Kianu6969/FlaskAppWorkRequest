@@ -84,7 +84,7 @@
 									<span>Priority Level: <i style="color: green">Low</i></span>
 								{% endif %}
 								<span>Date Work Time: <i>{{ req.dateApproved.strftime("%B %d, %Y") }} - {{ req.dateLimit.strftime("%B %d, %Y")  }}</i></span>
-								<span>Assigned Staff: <a href="#">Name</a></span>
+								<span>Assigned Staff: <a href="#">{{ req.staffAssignment.staffName }}</a></span>
 								<span>Work Location: <i>{{ req.roomNumber }}</i></span>
 							</footer>
 						</section>

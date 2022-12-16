@@ -80,12 +80,15 @@ def adminPageApproval(name, idNum):
 	formApprove = RequestApproval()
 	user = UserRequestForm.query.filter_by(requestorName=name_, id=idNum_).first()
 	approvedDate = datetime.now()
+	userStaff = StaffExtension.query.all()
+	# this will assign the specific staff
+	
 
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 
 	if formApprove.submitApproval.data and formApprove.validate_on_submit():
-		# we now set the date of request on approval time when the admin approves it
-		
+		staffAssigned = StaffExtension.query.filter_by(staffName=formApprove.assignStaff.data).first()
+		user.staffAssignment = staffAssigned
 		# set different time limits based on priority levels
 		if formApprove.priorityLevel.data == '1':
 			user.dateLimit = datetime.now() + timedelta(days=3)
@@ -101,7 +104,7 @@ def adminPageApproval(name, idNum):
 		db.session.commit()
 		return redirect(url_for('adminPage'))
 
-	return render_template('adminApproval.html',id=idNum_, userName=name_, title='Admin Approval Page', user=current_user.userName, form=formApprove, user2=user, profileImage=profileImage)
+	return render_template('adminApproval.html',id=idNum_, userName=name_, title='Admin Approval Page', user=current_user.userName, form=formApprove, user2=user, profileImage=profileImage, userStaff=userStaff)
 
 
 

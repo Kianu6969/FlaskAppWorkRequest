@@ -38,6 +38,8 @@ class StaffExtension(db.Model):
 	staffRating = db.Column(db.Integer, default=0)
 	staffComments = db.relationship('StaffExtensionComment', backref='staffComment')
 
+	staffAssignment = db.relationship('UserRequestForm', backref='staffAssignment') # one to many relationship
+
 	def __repr__(self): # this will print 
 		return f"User({self.id}, {self.staffId}, {self.staffName})"
 
@@ -66,6 +68,8 @@ class UserRequestForm(db.Model):
 	dateApproved = db.Column(DateTime, default=datetime.now(), nullable=False)
 	dateLimit = db.Column(DateTime, default=datetime.now(), nullable=False)
 	requestFormId = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+	assignedStaff = db.Column(db.Integer, db.ForeignKey('userstaff.id'), unique=True)
 
 	def __repr__(self): # this will print 
 		return f"User({self.requestorName},{self.requestTitle}, {self.requestedWork}, {self.roomNumber}, {self.requestFormId}, {self.priorityLevel}, {self.avilabilityOfMaterials}, {self.status})"

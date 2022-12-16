@@ -86,7 +86,7 @@ body{
 	flex-direction: column;
 	/*background: yellow;*/
 	height: 100%;
-	width: 30vw;
+	width: 35vw;
 	border: 1px solid var(--blueGreen);
 	margin-top: 3rem;
 	box-shadow: 10px 10px var(--blueGreen);
@@ -147,6 +147,7 @@ body{
 	font-weight: lighter;
 	padding: 0.5rem 2rem 0.5rem 2rem;
 	cursor: pointer;
+	margin-top: 1rem;
 }
 
 #approve-btn:active{
@@ -167,6 +168,125 @@ body{
 .content-main-body div main section:nth-child(5) ul li{
 	font-size: 1.2rem;
 }
+
+/* For the forms */
+.main-body-form main section form{
+	padding: 1rem;
+}
+.assign-btn{
+	border: none;
+	color: var(--white);
+	background-color: var(--blue);
+	padding: 0.5rem;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+
+.assignForm{
+	display: flex;
+	flex-direction: column;
+}
+.assignStaff{
+	margin-top: 1rem;
+	font-size: var(--fn-regular);
+	font-weight: bold;
+	/*background-color: red;*/
+	padding: 0;
+	width: 40%;
+}
+
+/* Modal Pop up */
+.modal-wrapper{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background: rgba(135, 192, 205,0.2);
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+.modal{
+	background-color: var(--white);
+	height: 70%;
+	width: 35%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--blue);
+	position: relative;
+	border-radius: 1rem;
+	border: 1px solid var(--blue);
+}
+.modal span:first-child{
+	flex-grow: 0;
+	padding: 0.5rem 4rem 0.5rem 4rem;
+
+}
+.modal span:nth-child(2){
+	flex-grow: 1;
+	/*padding: 0.5rem 4rem 0.5rem 4rem;*/
+	border-top: 1px solid var(--blue);
+	border-bottom: 1px solid var(--blue);
+	background-color: var(--white);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 1rem;
+	overflow: scroll;
+}
+.modal span:nth-child(2) div{
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	border: 1px solid var(--blue);
+	box-shadow: 7px 7px var(--blue);
+	margin-top: 1rem;
+	
+}
+.modal span:nth-child(2) div .header{
+	text-align: center;
+	border-bottom: 1px solid var(--blue);
+}
+.modal span:nth-child(2) div .main{
+	font-size: var(--fn-medium);
+	margin-left: 1rem;
+	padding: 0.5rem;
+}
+.modal span:nth-child(2) div .main a{
+	cursor: pointer;
+}
+.modal span:nth-child(2) div .footer{
+	/*margin-left: 1rem;*/
+	padding-left: 1rem;
+	display: flex;
+	flex-direction: column;
+	border-top: 1px solid var(--blue);
+}
+#close-btn{
+	position: absolute;
+	top: 0;
+	left: 95%;
+	width: 2.5rem;
+	height: 2.5rem;
+	transform: translateX(-50%);
+	/*background-color: red;*/
+	filter: var(--img-color-blue);
+	cursor: pointer;
+}
+#close-btn:hover{
+	filter: var(--img-danger);
+}
+
+.modal span:nth-child(3){
+	flex-grow: 0;
+}
+.assign-btn{
+	font-size: 0.8rem;
+}
+
 /*========================*/
 /* Footer Content =========*/
 /*======================*/

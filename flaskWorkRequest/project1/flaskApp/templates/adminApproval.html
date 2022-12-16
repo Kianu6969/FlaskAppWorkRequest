@@ -39,13 +39,45 @@
 							<p>Where 1 is the highest</p>
 							{{ form.hidden_tag() }}
 							{{ form.priorityLevel() }}
+
+							{{ form.assignStaff.label}}:
+
+							{{ form.assignStaff(class='assignStaff',readonly=true, value='None') }}
+							<span class="assign-btn">Assign a Staff</span>
 							{{ form.submitApproval(id="approve-btn") }}
 						</form>
+
 					</section>
+
 				</main>
 				
 			</div>
 		</section>
+
+		<!-- Modal for assigning staffs -->
+		<div class="modal-wrapper">
+			
+			<div class="modal">
+				<span class="modal-header">Assign Staff</span>
+				<span class="modal-content">
+					{% for staff in userStaff %}
+					<div class="staff-names">
+						<section class="header">Staff</section>
+						<section class="main"><a href='#'id="staffName">{{ staff.staffName }}</a></section>
+						<section class="footer">
+							<i>Occupation: {{ staff.staffOccupation }}</i>
+							<i>Rating: * * * * *</i>
+						</section>
+
+					</div>
+					{% endfor %}
+
+				</span>
+				<img src="{{url_for('static', filename='img/close-btn2.svg')}}" id="close-btn">
+				<span class="modal-footer">Footer</span>
+			</div>
+
+		</div>
 
 		<section class="content-main-footer">
 			

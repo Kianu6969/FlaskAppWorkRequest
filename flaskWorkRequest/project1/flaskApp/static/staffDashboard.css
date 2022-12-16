@@ -82,15 +82,19 @@ body{
 	flex-direction: column;
 	/*justify-content: center;*/
 }
-.content-left header{
-	flex-grow: 1;
+.content-left .header{
+	flex-grow: 0;
+	border-bottom: 1px solid var(--blueGreen);
+	text-align: center;
 }
-.content-left main{
+.content-left .main{
 	flex-grow: 1;
+	background-color: red;
+	height: 1rem;
 }
 
-.content-left footer{
-	flex-grow: 1;
+.content-left .footer{
+	flex-grow: 0;
 }
 
 
