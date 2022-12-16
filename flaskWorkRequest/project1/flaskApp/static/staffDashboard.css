@@ -77,7 +77,24 @@ body{
 .content-left{
 	grid-area: l;
 	border: 1px solid var(--blueGreen);
+	color: var(--blue);
+	display: flex;
+	flex-direction: column;
+	/*justify-content: center;*/
 }
+.content-left header{
+	flex-grow: 1;
+}
+.content-left main{
+	flex-grow: 1;
+}
+
+.content-left footer{
+	flex-grow: 1;
+}
+
+
+
 
 
 
