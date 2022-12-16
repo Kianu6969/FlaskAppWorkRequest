@@ -69,7 +69,7 @@ class UserRequestForm(db.Model):
 	dateLimit = db.Column(DateTime, default=datetime.now(), nullable=False)
 	requestFormId = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-	assignedStaff = db.Column(db.Integer, db.ForeignKey('userstaff.id'), unique=True)
+	assignedStaff = db.Column(db.Integer, db.ForeignKey('userstaff.id'))
 
 	def __repr__(self): # this will print 
 		return f"User({self.requestorName},{self.requestTitle}, {self.requestedWork}, {self.roomNumber}, {self.requestFormId}, {self.priorityLevel}, {self.avilabilityOfMaterials}, {self.status})"

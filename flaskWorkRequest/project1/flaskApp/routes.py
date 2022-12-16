@@ -168,10 +168,12 @@ def staffPage():
 	if current_user.is_authenticated == False:
 		return redirect(url_for('loginPage'))
 
+	userStaffAssigned = StaffExtension.query.filter_by(staffName=current_user.userName).first()
+
 	user = StaffExtension.query.filter_by(staffId=current_user.id).first()
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 
-	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user, profileImage=profileImage)
+	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user, profileImage=profileImage, userStaffAssigned=userStaffAssigned.staffAssignment)
 
 
 # LOGOUT PAGE (this will logout the current user session)===================

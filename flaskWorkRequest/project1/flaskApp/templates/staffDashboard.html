@@ -17,7 +17,12 @@
 <!-- this is where the staff assignment of work request is being viewd -->
 <section class="content-left">
 	<section class="header">Assigned Work</section>
-	<section class="main">Main</section>
+	<section class="main">
+		{% for assigned in userStaffAssigned %}
+			{{ assigned.requestorName }}
+			{{ assigned.requestTitle }}
+		{% endfor %}
+	</section>
 	<section class="footer">Foot</section>
 </section>
 <!-- ========== END - Left Content - END ========== -->
