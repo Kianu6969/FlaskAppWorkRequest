@@ -43,28 +43,32 @@
                     <a href="{{ url_for('adminPage') }}">Work Request System</a>
                 </section>
                 <section class="header-user">   
-                    {{ user }}
+                    <img class='profile-picture'src="{{ profileImage }}">
+                    <i>{{ user }}</i>
                 </section>
             {% elif title == 'Requestor Page' %}
                 <section class="header-title">
                     <a href="{{ url_for('requestorPage') }}">Work Request System</a>
                 </section>
-                <section class="header-user">   
-                    {{ user }}
+                <section class="header-user"> 
+                <img class='profile-picture'src="{{ profileImage }}">
+                    <i>{{ user }}</i>
                 </section>
             {% elif title == 'Staff Page' %}
                 <section class="header-title">
                     <a href="{{ url_for('staffPage') }}">Work Request System</a>
                 </section>
-                <section class="header-user">   
-                    {{ user }}
+                <section class="header-user">  
+               <img class='profile-picture'src="{{ profileImage }}">
+                   <i>{{ user }}</i>
                 </section>
             {% elif title == 'Admin Approval Page' %}
                 <section class="header-title">
                     <a href="{{ url_for('adminPage') }}">Work Request System</a>
                 </section>
-                <section class="header-user">   
-                    {{ user }}
+                <section class="header-user">  
+                <img class='profile-picture'src="{{ profileImage }}"> 
+                    <i>{{ user }}</i>
                 </section>
             {% endif %}
 

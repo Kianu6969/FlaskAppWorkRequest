@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
 	userName = db.Column(db.String(20), unique=True, nullable=False)
 	userType = db.Column(db.String(20), default='Admin')
 	passWord = db.Column(db.String(60), nullable=False)
-
+	profilePicture = db.Column(db.String(60), default='dafault.png')
 	# this will be generated in the UserRequestform Table
 	requestForm = db.relationship('UserRequestForm', backref='user') 
 	userStaffExtension = db.relationship('StaffExtension', backref='staffExtension', uselist=False)
@@ -59,7 +59,7 @@ class UserRequestForm(db.Model):
 	requestorName = db.Column(db.String(500), nullable=False)
 	requestTitle = db.Column(db.String(500), nullable=False)
 	requestedWork = db.Column(db.String(500), nullable=False)
-	roomNumber = db.Column(db.Integer(), nullable=False)
+	roomNumber = db.Column(db.String(20), nullable=False)
 	avilabilityOfMaterials = db.Column(db.String(10), nullable=False)
 	priorityLevel = db.Column(db.Integer, default=0) # change this to integer in the future 0 - pending 1 - high 2 - medium 3 - low
 	status = db.Column(db.String(20), default='Pending')

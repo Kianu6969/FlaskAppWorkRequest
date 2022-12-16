@@ -24,6 +24,7 @@ def adminPage():
 	requestsCount = UserRequestForm.query.filter_by(status='Pending').count()
 	pendingRequest = UserRequestForm.query.filter_by(status='Pending')
 	staffCount = User.query.filter_by(userType='Staff').count()
+	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 	# usersRequestor = User.query.filter_by(userType='Requestor')
 
 	if current_user.is_authenticated == False:
@@ -58,7 +59,8 @@ def adminPage():
 	    					workRequest=workRequest, 
 	    					countReq=requestsCount,
 	    					countStaff=staffCount,
-	    					pendingRequest=pendingRequest)
+	    					pendingRequest=pendingRequest,
+	    					profileImage=profileImage)
 # reject a request
 @app.route('/adminPage/reject/<name>/<int:ids>')
 def reject(name, ids):
@@ -78,6 +80,9 @@ def adminPageApproval(name, idNum):
 	formApprove = RequestApproval()
 	user = UserRequestForm.query.filter_by(requestorName=name_, id=idNum_).first()
 	approvedDate = datetime.now()
+
+	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
+
 	if formApprove.submitApproval.data and formApprove.validate_on_submit():
 		# we now set the date of request on approval time when the admin approves it
 		
@@ -96,7 +101,7 @@ def adminPageApproval(name, idNum):
 		db.session.commit()
 		return redirect(url_for('adminPage'))
 
-	return render_template('adminApproval.html',id=idNum_, userName=name_, title='Admin Approval Page', user=current_user.userName, form=formApprove, user2=user)
+	return render_template('adminApproval.html',id=idNum_, userName=name_, title='Admin Approval Page', user=current_user.userName, form=formApprove, user2=user, profileImage=profileImage)
 
 
 
@@ -144,6 +149,7 @@ def requestorPage():
 	user = User.query.filter_by(userName=current_user.userName).first()
 	countRequests = UserRequestForm.query.filter_by(requestorName=current_user.userName).count()
 	userRequestForms = UserRequestForm.query.filter_by(requestFormId=user.id).order_by(desc(UserRequestForm.id))
+	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 
 	if form.submit.data and form.validate_on_submit():
 		requestForm = UserRequestForm(requestorName=current_user.userName, requestedWork=form.workOrder.data, roomNumber=form.requestRoomNumber.data, avilabilityOfMaterials=form.materialAvailability.data,requestTitle = form.requestTitle.data, user=user, dateApproved=datetime.now())
@@ -151,7 +157,7 @@ def requestorPage():
 		db.session.commit()
 	# user = User()
 	# user.query.get(1).userName
-	return render_template('requestorDashboard.html', title='Requestor Page', user=current_user.userName, form=form, userForm=userRequestForms, count=countRequests)
+	return render_template('requestorDashboard.html', title='Requestor Page', user=current_user.userName, form=form, userForm=userRequestForms, count=countRequests, profileImage=profileImage)
 
 # STAFF PAGE===============================
 @app.route('/staffPage', methods=['GET', 'POST'])
@@ -160,8 +166,9 @@ def staffPage():
 		return redirect(url_for('loginPage'))
 
 	user = StaffExtension.query.filter_by(staffId=current_user.id).first()
+	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 
-	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user)
+	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user, profileImage=profileImage)
 
 
 # LOGOUT PAGE (this will logout the current user session)===================
