@@ -38,6 +38,10 @@ class Staff_Registration(FlaskForm):
 
 	submitStaff = SubmitField('Register')
 
+# Staff Ongoing
+class RequestOngoing(FlaskForm):
+	submit = SubmitField('On Going')
+
 # Login Form
 class LoginForm(FlaskForm):
 	userName = StringField('departmentName', 

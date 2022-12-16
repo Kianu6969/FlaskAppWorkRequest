@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect
 from flaskApp import app, db, bcrypt
  # this is our forms
-from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval
+from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing
 from flaskApp.models import User, UserRequestForm, StaffExtension # this is our database model
 from flask_login import login_user, current_user, logout_user # these are for handling sessions
 from sqlalchemy import desc
@@ -24,6 +24,7 @@ def adminPage():
 	requestsCount = UserRequestForm.query.filter_by(status='Pending').count()
 	pendingRequest = UserRequestForm.query.filter_by(status='Pending')
 	staffCount = User.query.filter_by(userType='Staff').count()
+
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 	# usersRequestor = User.query.filter_by(userType='Requestor')
 
@@ -75,6 +76,9 @@ def reject(name, ids):
 # ADMIN APPROVAL PAGE - This is where the admin can approve a pending work request
 @app.route('/adminPage/requestApproval/<name>/<int:idNum>', methods=['POST', 'GET'])
 def adminPageApproval(name, idNum):
+	if current_user.is_authenticated == False:
+		return redirect(url_for('loginPage'))
+
 	name_ = name
 	idNum_ = idNum
 	formApprove = RequestApproval()
@@ -151,7 +155,7 @@ def requestorPage():
 	form = WorkRequestForm()
 	user = User.query.filter_by(userName=current_user.userName).first()
 	countRequests = UserRequestForm.query.filter_by(requestorName=current_user.userName).count()
-	userRequestForms = UserRequestForm.query.filter_by(requestFormId=user.id).order_by(desc(UserRequestForm.id))
+	userRequestForms = UserRequestForm.query.filter_by(requestFormId=user.id).order_by(UserRequestForm.priorityLevel)
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 
 	if form.submit.data and form.validate_on_submit():
@@ -168,6 +172,7 @@ def staffPage():
 	if current_user.is_authenticated == False:
 		return redirect(url_for('loginPage'))
 
+	#this returns a Staffextention from the user that has a type of staff
 	userStaffAssigned = StaffExtension.query.filter_by(staffName=current_user.userName).first()
 
 	user = StaffExtension.query.filter_by(staffId=current_user.id).first()
@@ -175,6 +180,24 @@ def staffPage():
 
 	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user, profileImage=profileImage, userStaffAssigned=userStaffAssigned.staffAssignment)
 
+# Staff ongoing page - where the staff can change the status of the form
+@app.route('/staffPage/Ongoing/<name>/<idNum>', methods=['GET', 'POST'])
+def staffOngoingPage(name, idNum):
+	if current_user.is_authenticated == False:
+		return redirect(url_for('loginPage'))
+
+	_name = name
+	_id = idNum
+	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
+	form = UserRequestForm.query.filter_by(requestorName=_name, id=_id).first()
+	formSubmit = RequestOngoing()
+
+	if formSubmit.submit.data and formSubmit.validate_on_submit():
+		form.status = 'OnGoing'
+		db.session.commit()
+		return redirect(url_for('staffPage'))
+
+	return render_template('staffOngoing.html', name=_name, title='Staff Ongoing Page', profileImage=profileImage, user=current_user.userName, form=form, formSubmit=formSubmit)
 
 # LOGOUT PAGE (this will logout the current user session)===================
 @app.route('/logout', methods=['GET', 'POST'])

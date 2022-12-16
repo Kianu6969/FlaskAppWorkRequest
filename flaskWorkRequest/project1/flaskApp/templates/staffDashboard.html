@@ -4,10 +4,40 @@
 
 <!-- ========== Main Content ========== -->
 <main class="content-main">
-		<i>{{ userStaff.staffName }}</i>
-		<i>{{ userStaff.staffAge }}</i>
-		<i>{{ userStaff.staffGender }}</i>
-		<i>{{ userStaff.staffOccupation }}</i>
+
+		<section class="header">
+			Ongoing Job 
+		</section>
+
+		<section class="body">
+			{% for assigned in userStaffAssigned %}
+				{% if assigned.status == 'OnGoing' %}
+					<div class="content">
+						<section class="content-deptName">
+							<i>{{ assigned.requestorName }}</i>
+						</section>
+
+						<section class="content-title"><a href="">{{ assigned.requestTitle }}</a></section>
+						<section class="content-date">
+							<i>Location: <p> {{ assigned.roomNumber }}</p></i>
+							{% if assigned.priorityLevel == 1 %}
+								<i>Priority Level: <p style="color:red;">High</p></i>
+							{% elif assigned.priorityLevel == 2 %}
+								<i>Priority Level: <p style="color:orange;">Medium</p></i>
+							{% elif assigned.priorityLevel == 3 %}
+								<i>Priority Level: <p style="color:green;">Low</p></i>
+							{% endif %}
+							<i>Time Limit: <p> {{ assigned.dateLimit.strftime("%B %d, %Y") }}</p></i>
+						</section>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</section>
+
+		<section class="footer">
+			Footer
+		</section>
+
 </main>
 <!-- ========== END - Main Content - END ========== -->
 
@@ -19,8 +49,26 @@
 	<section class="header">Assigned Work</section>
 	<section class="main">
 		{% for assigned in userStaffAssigned %}
-			{{ assigned.requestorName }}
-			{{ assigned.requestTitle }}
+			{% if assigned.status != 'OnGoing' %}
+			<div class="content-left-items">
+				<section class="req-name">
+					{{ assigned.requestorName }}
+				</section>
+				
+				<section class="req-title">
+					<a href="{{ url_for('staffOngoingPage', name=assigned.requestorName, idNum=assigned.id) }}">{{ assigned.requestTitle }}</a>
+				</section>
+				<section class="req-status">
+					{% if assigned.priorityLevel == 1 %}
+						<span>Priority Level: <i style="color:red;">High</i></span>
+					{% elif assigned.priorityLevel == 2 %}
+						<span>Priority Level: <i style="color:orange;">Medium</i></span>
+					{% elif assigned.priorityLevel == 3 %}
+						<span>Priority Level: <i style="color:green;">Low</i></span>
+					{% endif %}
+				</section>
+			</div>
+			{% endif %}
 		{% endfor %}
 	</section>
 	<section class="footer">Foot</section>

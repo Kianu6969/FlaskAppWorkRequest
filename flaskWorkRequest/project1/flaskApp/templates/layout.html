@@ -18,8 +18,10 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='requestorDashboard.css') }}">
     {% elif title == 'Staff Page'%}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='staffDashboard.css') }}">
-     {% elif title == 'Admin Approval Page'%}
+    {% elif title == 'Admin Approval Page'%}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='adminApproval.css') }}">
+    {% elif title == 'Staff Ongoing Page'%}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='staffOngoing.css') }}">
     {% endif%}
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -65,6 +67,14 @@
             {% elif title == 'Admin Approval Page' %}
                 <section class="header-title">
                     <a href="{{ url_for('adminPage') }}">Work Request System</a>
+                </section>
+                <section class="header-user">  
+                <img class='profile-picture'src="{{ profileImage }}"> 
+                    <i>{{ user }}</i>
+                </section>
+            {% elif title == 'Staff Ongoing Page' %}
+                <section class="header-title">
+                    <a href="{{ url_for('staffPage') }}">Work Request System</a>
                 </section>
                 <section class="header-user">  
                 <img class='profile-picture'src="{{ profileImage }}"> 
