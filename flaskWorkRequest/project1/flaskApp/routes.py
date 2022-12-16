@@ -22,7 +22,7 @@ def adminPage():
 	formRequestor = Requestor_Registration()
 	workRequest = UserRequestForm.query.order_by(UserRequestForm.priorityLevel)
 	requestsCount = UserRequestForm.query.filter_by(status='Pending').count()
-	pendingRequest = UserRequestForm.query.filter_by(status='Pending')
+	pendingRequest = UserRequestForm.query.filter_by(status='Pending').order_by(desc(UserRequestForm.dateApproved))
 	staffCount = User.query.filter_by(userType='Staff').count()
 
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
