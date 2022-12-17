@@ -192,6 +192,7 @@ body{
 .content-right{
 	grid-area: r;
 	border: 1px solid var(--blueGreen);
+	margin-right: 1rem;
 }
 
 

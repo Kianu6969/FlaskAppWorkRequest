@@ -226,14 +226,22 @@ def profilePage():
 	profile = User.query.filter_by(id=current_user.id).first()
 	form = ProfileForm()
 	currentProfile = current_user.profilePicture
-	page = 'None'
 
+	page = 'None'
+	pageTemplate = 'profilePage.html'
+
+	# changing pages for different users
 	if current_user.userType == 'Admin':
 		page = 'adminPage'
+		pageTemplate = 'profilePageAdmin.html'
+
 	elif current_user.userType == 'Staff':
 		page = 'staffPage'
+		pageTemplate = 'profilePageStaff.html'
+
 	elif current_user.userType == 'Requestor':
 		page = 'requestorPage'
+		pageTemplate = 'profilePageRequestor.html'
 
 	if form.submit.data and form.validate_on_submit():
 		if form.profilePic.data:
@@ -244,7 +252,7 @@ def profilePage():
 		return redirect(url_for('profilePage'))
 
 
-	return render_template('profilePage.html', title='Profile Page', user=current_user.userName, profileImage=profileImage, page=page, profile=profile, form=form, currentProfile=currentProfile)
+	return render_template(pageTemplate, title='Profile Page', user=current_user.userName, profileImage=profileImage, page=page, profile=profile, form=form, currentProfile=currentProfile)
 
 
 # LOGOUT PAGE (this will logout the current user session)===================

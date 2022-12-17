@@ -12,7 +12,7 @@ body{
 	display: grid;
 	height: 100vh;
 
-	grid-template-columns: 0.5fr 1fr 0.5fr;
+	grid-template-columns: 0fr 1fr 1fr;
 	grid-template-rows: 0fr 1fr 0.0fr;
 
 	grid-template-areas: 
@@ -163,4 +163,14 @@ body{
 	flex-direction: row;
 	align-items: center;
 	margin-left: 2rem;
+}
+
+
+/*=========================*/
+/*===== CONTENT RIGHT ====*/
+/*=======================*/
+
+.content-right{
+	grid-area: l;
+	background-color: red;
 }
