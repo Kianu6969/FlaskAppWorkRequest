@@ -177,7 +177,6 @@ def staffPage():
 
 	#this returns a Staffextention from the user that has a type of staff
 	userStaffAssigned = StaffExtension.query.filter_by(staffName=current_user.userName).first()
-
 	user = StaffExtension.query.filter_by(staffId=current_user.id).first()
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 

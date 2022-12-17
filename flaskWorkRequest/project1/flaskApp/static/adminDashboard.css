@@ -428,6 +428,9 @@ body{
 	transform: translateX(-50%);
 }
 /* modal staff */
+.gender{
+	list-style: none;
+}
 .modal-staff{
 	position: absolute;
 	height: 100vh;

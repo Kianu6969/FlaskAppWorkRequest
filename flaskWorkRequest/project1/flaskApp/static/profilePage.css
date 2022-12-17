@@ -139,10 +139,21 @@ body{
 	border: 1px solid var(--blue);
 	padding: 0.5rem;
 }
-.profile-image i{
+.profile-image div{
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-image div i{
 	color: var(--blue);
 	font-size: var(--fn-large);
 	font-weight: bold;
+	margin-left: 1rem;
+}
+.profile-image div i:nth-child(2){
+	color: var(--blue);
+	font-size: var(--fn-medium);
+	font-weight: lighter;
 	margin-left: 1rem;
 }
 .profile-image{

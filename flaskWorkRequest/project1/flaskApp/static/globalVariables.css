@@ -99,7 +99,7 @@ i{
 .profile-picture{
 	width: 3rem;
 	height: 3rem;
-	border: 1px solid var(--blue);
+	border: 1px solid var(--blueGreen);
 }
 
 .header-user{

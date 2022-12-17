@@ -6,12 +6,12 @@
 <main class="content-main">
 
 		<section class="header">
-			Ongoing Job 
+			Started Jobs 
 		</section>
 
 		<section class="body">
 			{% for assigned in userStaffAssigned %}
-				{% if assigned.status == 'OnGoing' %}
+				{% if assigned.status == 'OnGoing'%}
 					<div class="content">
 						<section class="content-deptName">
 							<i>{{ assigned.requestorName }}</i>
