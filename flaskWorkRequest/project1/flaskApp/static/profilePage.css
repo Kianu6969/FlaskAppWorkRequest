@@ -1,0 +1,71 @@
+@import 'globalVariables.css';
+
+
+
+body{
+	background: var(--white);
+}
+
+
+.container{
+	margin: 0;
+	display: grid;
+	height: 100vh;
+
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 0fr 1fr 0.0fr;
+
+	grid-template-areas: 
+			'h h h'
+			'm m m'
+			'f f f';
+}
+/*=================================*/
+/* CONTENT HEADER ================*/
+/*===============================*/
+.content-header{
+	grid-area: h;
+	display: flex;
+	flex-direction: row;
+	/*justify-content: center;*/
+	align-items: center;
+	padding: var(--fn-small);
+}
+
+.img-box{
+	flex-grow: 0;
+}
+.header-title{
+	flex-grow: 0;
+	margin-left: 1rem;
+	
+}
+.header-title a{
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+.header-user{
+	flex-grow: 1;
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+
+.header-profile{
+	flex-grow: 0.3;
+}
+.header-profile a{
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	color: var(--blue);
+}
+
+
+/*===================*/
+/*==== MAIN CONTENT ===*/
+/*==================*/
+
+.content-main{
+	color: var(--blue);
+}

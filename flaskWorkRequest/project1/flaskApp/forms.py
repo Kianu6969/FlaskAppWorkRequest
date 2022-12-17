@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, RadioField, IntegerField
 from wtforms.validators import DataRequired, Length, Email
 
@@ -74,3 +75,9 @@ class WorkRequestForm(FlaskForm):
 	materialAvailability = RadioField('materialAvialability', choices=['Yes', 'No'])
 	submit = SubmitField('Submit Request')
 
+# Profile Form
+
+class ProfileForm(FlaskForm):
+
+	profilePic = FileField('Update Profile Picture', validators=[FileAllowed(['jpg','png'])])
+	submit = SubmitField('Update')

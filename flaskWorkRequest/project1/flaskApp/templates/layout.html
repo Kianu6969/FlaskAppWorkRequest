@@ -22,6 +22,8 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='adminApproval.css') }}">
     {% elif title == 'Staff Ongoing Page'%}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='staffOngoing.css') }}">
+    {% elif title == 'Profile Page'%}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profilePage.css') }}">
     {% endif%}
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -46,7 +48,7 @@
                 </section>
                 <section class="header-user">   
                     <img class='profile-picture'src="{{ profileImage }}">
-                    <i>{{ user }}</i>
+                    <a href="{{ url_for('profilePage') }}">{{ user }}</a>
                 </section>
             {% elif title == 'Requestor Page' %}
                 <section class="header-title">
@@ -54,7 +56,7 @@
                 </section>
                 <section class="header-user"> 
                 <img class='profile-picture'src="{{ profileImage }}">
-                    <i>{{ user }}</i>
+                    <a href="{{ url_for('profilePage') }}">{{ user }}</a>
                 </section>
             {% elif title == 'Staff Page' %}
                 <section class="header-title">
@@ -62,7 +64,7 @@
                 </section>
                 <section class="header-user">  
                <img class='profile-picture'src="{{ profileImage }}">
-                   <i>{{ user }}</i>
+                   <a href="{{ url_for('profilePage') }}">{{ user }}</a>
                 </section>
             {% elif title == 'Admin Approval Page' %}
                 <section class="header-title">
@@ -70,20 +72,29 @@
                 </section>
                 <section class="header-user">  
                 <img class='profile-picture'src="{{ profileImage }}"> 
-                    <i>{{ user }}</i>
+                    <a href="{{ url_for('profilePage') }}">{{ user }}</a>
                 </section>
             {% elif title == 'Staff Ongoing Page' %}
                 <section class="header-title">
-                    <a href="{{ url_for('staffPage') }}">Work Request System</a>
+                    <a class='profile-picture' href="{{ url_for('staffPage') }}">Work Request System</a>
                 </section>
                 <section class="header-user">  
-                <img class='profile-picture'src="{{ profileImage }}"> 
-                    <i>{{ user }}</i>
+                <img src="{{ profileImage }}">
+                    <a href="{{ url_for('profilePage') }}">{{ user }}</a>
+                </section>
+            {% elif title == 'Profile Page' %}
+                <section class="header-title">
+                    <a href="{{ url_for(page) }}">Work Request System</a>
+                </section>
+                <section class="header-user">  
+                <img class='profile-picture' src="{{ profileImage }}"> 
+                    <a href="{{ url_for('profilePage') }}">{{ user }}</a>
                 </section>
             {% endif %}
 
             <div class="header-profile">
                 {% if current_user.is_authenticated == True %}
+                <img src="{{ url_for('static', filename='img/logout.svg') }}">
                 <a href="{{ url_for('logout') }}">Logout</a>
                 {% endif %}
             </div>
@@ -105,6 +116,7 @@
         <script type="text/javascript" src="{{ url_for('static', filename='js/login.js') }}"></script>  
     {% elif title == 'Admin Approval Page'%}
         <script type="text/javascript" src="{{ url_for('static', filename='js/approval.js') }}"></script>  
+
        
     {% endif %}
     

@@ -1,7 +1,9 @@
+import os
+import secrets
 from flask import render_template, url_for, flash, redirect
 from flaskApp import app, db, bcrypt
  # this is our forms
-from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing
+from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing, ProfileForm
 from flaskApp.models import User, UserRequestForm, StaffExtension # this is our database model
 from flask_login import login_user, current_user, logout_user # these are for handling sessions
 from sqlalchemy import desc
@@ -198,6 +200,46 @@ def staffOngoingPage(name, idNum):
 		return redirect(url_for('staffPage'))
 
 	return render_template('staffOngoing.html', name=_name, title='Staff Ongoing Page', profileImage=profileImage, user=current_user.userName, form=form, formSubmit=formSubmit)
+
+# Save Picture 
+def savePic(formPic):
+	randomHex = secrets.token_hex(8)
+	_, f_ext = os.path.splitext(formPic.filename)
+	picFileName = randomHex + f_ext
+	fpath = os.path.join(app.root_path, 'static/profilePic', picFileName)
+	formPic.save(fpath)
+
+	return picFileName
+
+# PROFILE PAGE FOR USERS
+@app.route('/profilePage', methods=['GET', 'POST'])
+def profilePage():
+	if current_user.is_authenticated == False:
+		return redirect(url_for('loginPage'))
+
+	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
+	profile = User.query.filter_by(id=current_user.id).first()
+	form = ProfileForm()
+	page = 'None'
+
+	if current_user.userType == 'Admin':
+		page = 'adminPage'
+	elif current_user.userType == 'Staff':
+		page = 'staffPage'
+	elif current_user.userType == 'Requestor':
+		page = 'requestorPage'
+
+	if form.submit.data and form.validate_on_submit():
+		if form.profilePic.data:
+			updatedProfilePic = savePic(form.profilePic.data)
+			current_user.profilePicture = updatedProfilePic
+			db.session.commit()
+
+		return redirect(url_for('profilePage'))
+
+
+	return render_template('profilePage.html', title='Profile Page', user=current_user.userName, profileImage=profileImage, page=page, profile=profile, form=form)
+
 
 # LOGOUT PAGE (this will logout the current user session)===================
 @app.route('/logout', methods=['GET', 'POST'])

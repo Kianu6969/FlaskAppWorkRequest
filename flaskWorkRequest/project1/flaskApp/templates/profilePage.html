@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+
+
+<main class="content-main">
+	{{ profile.userName }}
+
+	<form action="" method="POST" enctype="multipart/form-data">
+		{{form.hidden_tag()}}
+		{{ form.profilePic(class='form-file') }}
+
+		{% if form.profilePic.errors %}
+			{% for error in form.profilePic.errors %}
+				<span style="color: red;">{{ error }}</span>
+			{% endfor %}
+		{% endif %}
+
+		{{ form.submit(class='update-profile') }}
+
+	</form>
+</main>
+
+<footer class="content-footer"></footer>
+
+{% endblock content %}
