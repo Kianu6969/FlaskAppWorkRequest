@@ -19,6 +19,11 @@
 
 						<section class="content-title">
 							<i>{{ assigned.requestTitle }}</i>
+							<span class="finished">
+								<a href="{{ url_for('staffFinishedPage',name=assigned.requestTitle, id=assigned.id) }}">
+									<img src="{{ url_for('static', filename='img/finished.svg') }}">
+								</a>
+							</span>
 						</section>
 						<section class="content-date">
 							<i>Location: <p> {{ assigned.roomNumber }}</p></i>
@@ -51,7 +56,7 @@
 	<section class="header">Assigned Work</section>
 	<section class="main">
 		{% for assigned in userStaffAssigned %}
-			{% if assigned.status != 'OnGoing' %}
+			{% if assigned.status != 'OnGoing' and assigned.status != 'Finished'%}
 			<div class="content-left-items">
 				<section class="req-name">
 					{{ assigned.requestorName }}
@@ -80,7 +85,30 @@
 
 <!-- ========== Right Content ========== -->
 <section class="content-right">
-	
+	<section class="header">Finished Jobs</section>
+	<section class="main">
+		<!-- This is where all the finished stuff is located -->
+		{% for assigned in userStaffAssigned %}
+			{% if assigned.status == 'Finished'%}
+				<div class="content-finished">
+					<section class="finished-header">
+						{{ assigned.requestorName }}
+					</section>
+
+					<section class="finished-main">
+						{{ assigned.requestTitle }}
+					</section>
+
+					<section class="finished-footer">
+						<i>Status: </i>
+						<i>{{ assigned.status }}</i>
+					</section>
+
+				</div>
+			{% endif %}
+		{% endfor %}
+	</section>
+	<section class="footer"></section>
 </section>
 <!-- ========== END - Right Content - END ========== -->
 

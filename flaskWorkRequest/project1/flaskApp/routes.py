@@ -76,6 +76,9 @@ def reject(name, ids):
 	flash(f'{reqFormRemoved.requestorName} : {reqFormRemoved.requestTitle} - Removed')
 	return redirect(url_for('adminPage'))
 
+
+
+
 # ADMIN APPROVAL PAGE - This is where the admin can approve a pending work request
 @app.route('/adminPage/requestApproval/<name>/<int:idNum>', methods=['POST', 'GET'])
 def adminPageApproval(name, idNum):
@@ -181,6 +184,18 @@ def staffPage():
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 
 	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user, profileImage=profileImage, userStaffAssigned=userStaffAssigned.staffAssignment)
+
+@app.route('/staffPage/finished/<name>/<int:id>', methods=['POST', 'GET'])
+def staffFinishedPage(name, id):
+
+	_name = name
+	_id = id
+	form = UserRequestForm.query.filter_by(requestTitle=_name, id = _id).first()
+	form.status = 'Finished'
+	db.session.commit()
+
+	return redirect(url_for('staffPage'))
+
 
 # Staff ongoing page - where the staff can change the status of the form
 @app.route('/staffPage/Ongoing/<name>/<idNum>', methods=['GET', 'POST'])

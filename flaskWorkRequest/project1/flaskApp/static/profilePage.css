@@ -13,12 +13,12 @@ body{
 	height: 100vh;
 
 	grid-template-columns: 0fr 1fr 1fr;
-	grid-template-rows: 0fr 1fr 0.0fr;
+	grid-template-rows: 0fr 0.5fr 1fr;
 
 	grid-template-areas: 
 			'h h h'
-			'r m l'
-			'f f f';
+			'm m m'
+			'l l l';
 }
 /*=================================*/
 /* CONTENT HEADER ================*/
@@ -70,6 +70,10 @@ body{
 	grid-area: m;
 	color: var(--blue);
 	/*background-color: red;*/
+	display: flex;
+	flex-direction: column;
+	/*justify-content: center;*/
+	align-items: center;
 }
 
 .form-update{
@@ -81,6 +85,7 @@ body{
 	/*padding: 1rem;*/
 	box-shadow: 10px 10px var(--blue);
 	margin-top: 2rem; 
+	width: 50%;
 }
 .form-title{
 	text-align: center;
@@ -172,5 +177,28 @@ body{
 
 .content-right{
 	grid-area: l;
-	background-color: red;
+	/*background-color: red;*/
+	display: flex;
+	flex-direction: column;
+/*	justify-content: center;*/
+	align-items: center;
+	padding-top: 1rem;
+}
+.content-right-information{
+	border: 1px solid var(--blue);
+	color: var(--blue);
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	height: 80%;
+	box-shadow: 10px 10px var(--blue);
+}
+.ratings{
+	flex-grow: 1;
+	margin-left: 1rem;
+	border-right: 1px solid var(--blue);
+}
+.comments{
+	flex-grow: 1;
+	margin-left: 1rem;
 }

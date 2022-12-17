@@ -66,7 +66,7 @@ body{
 /*====================*/
 .content-main{
 	grid-area: m;
-	border: 1px solid var(--blueGreen);
+	border: 1px solid var(--blue);
 	color: var(--blue);
 	display: flex;
 	flex-direction: column;
@@ -74,11 +74,13 @@ body{
 }
 .content-main .header{
 	flex-grow: 0;
-	border-bottom: 1px solid var(--blueGreen);
+	border-bottom: 1px solid var(--blue);
 	padding: 0.5rem 0rem 0.5rem 0rem;
 	text-align: center;
 	font-size: var(--fn-medium);
 	font-weight: bold;
+	color: var(--white);
+	background-color: var(--blue);
 }
 /* content for ongoing requests */
 .content-main .body{
@@ -91,12 +93,12 @@ body{
 }
 .content{
 	margin-top: 1.5rem;
-	border: 1px solid var(--blueGreen);
+	border: 1px solid var(--blue);
 	width: 60%;
-	box-shadow: 10px 10px var(--blueGreen);
+	box-shadow: 10px 10px var(--blue);
 }
 .content-deptName{
-	border-bottom: 1px solid var(--blueGreen);
+	border-bottom: 1px solid var(--blue);
 	text-align: center;
 	font-size: var(--fn-medium);
 	font-weight: lighter;
@@ -104,10 +106,27 @@ body{
 .content-title{
 	padding: 1rem 1rem 1rem 2rem;
 	font-size: var(--fn-large);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
+.content-title span{
+	/*background-color: red;*/
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+}
+.content-title span img{
+	filter: var(--img-color-blue);
+	width: 3rem;
+	height: 3rem;
+	cursor: pointer;
+}
+
 .content-date{
 	padding-left: 1rem;
-	border-top: 1px solid var(--blueGreen);
+	border-top: 1px solid var(--blue);
 	display: flex;
 	flex-direction: column;
 }
@@ -146,7 +165,9 @@ body{
 	padding: 0.5rem;
 	font-size: var(--fn-regular);
 	font-weight: lighter;
-	color: var(--blue);
+	color: var(--white);
+	background-color: var(--blueGreen);
+	font-weight: bold;
 }
 .content-left .main{
 	flex-grow: 1;
@@ -193,9 +214,46 @@ body{
 	grid-area: r;
 	border: 1px solid var(--blueGreen);
 	margin-right: 1rem;
+	color: var(--blue);
+	display: flex;
+	flex-direction: column;
 }
 
+.content-right .header{
+	flex-grow: 0;
+	border-bottom: 1px solid var(--blueGreen);
+	color: var(--white);
+	background-color: var(--blueGreen);
+	text-align: center;
+	padding: 0.5rem;
+	font-weight: bold;
+}
+.content-right .main{
+	flex-grow: 1;
+	height: 0rem;
+}
+.content-right .footer{
+	flex-grow: 0;
+}
+.content-finished{
+	border: 1px solid var(--blueGreen);
+	margin: 1rem 0.5rem 0rem 0.5rem;
+	padding: 0.5rem;
+	border-radius: 1rem;
+}
 
+.content-finished .finished-header{
+	margin-left: 1rem;
+}
+
+.content-finished .finished-main{
+	font-size: var(--fn-medium);
+	margin-left: 1rem;
+}
+
+.content-finished .finished-footer{
+	margin-left: 1rem;
+}
 
 
 
