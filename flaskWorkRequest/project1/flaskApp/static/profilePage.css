@@ -12,12 +12,12 @@ body{
 	display: grid;
 	height: 100vh;
 
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 0.5fr 1fr 0.5fr;
 	grid-template-rows: 0fr 1fr 0.0fr;
 
 	grid-template-areas: 
 			'h h h'
-			'm m m'
+			'r m l'
 			'f f f';
 }
 /*=================================*/
@@ -67,5 +67,89 @@ body{
 /*==================*/
 
 .content-main{
+	grid-area: m;
 	color: var(--blue);
+	/*background-color: red;*/
+}
+
+.form-update{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/*background-color: pink;*/
+	border: 1px solid var(--blue);
+	/*padding: 1rem;*/
+	box-shadow: 10px 10px var(--blue);
+	margin-top: 2rem; 
+}
+.form-title{
+	text-align: center;
+	font-size: var(--fn-medium);
+	border-bottom: 1px solid var(--blue);
+}
+.upload img{
+	padding-left: 1rem;
+	filter: var(--img-color-blue);
+	width: 2rem;
+	height: 2rem;
+}
+.upload{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/*background-color: var(--blueGreen);*/
+	border: 1px solid var(--blue);
+	border-radius: 2rem;
+	width: 20%;
+	justify-content: center;
+	margin-top: 1rem;
+	margin-left: 2.5rem;
+}
+.update-profile{
+	border: 1px solid var(--blue);
+	color: var(--blue);
+	font-weight: lighter;
+	font-size: var(--fn-medium);
+	padding: 0.5rem 1rem 0.5rem 1rem;
+	width: 50%;
+	margin-top: 2rem;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	margin-bottom: 1rem;
+	background-color: var(--white);
+}
+.update-profile:hover{
+	cursor: pointer;
+	background-color: var(--blue);
+	color: var(--white);
+	border: 1px solid var(--blue);
+}
+.upload:hover{
+	cursor: pointer;
+}
+.upload i{
+	padding: 0.5rem 1rem 0.5rem 0rem;
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+}
+.profile-image img{
+	width: 10rem;
+	height: 10rem;
+	border-radius: 50%;
+	border: 1px solid var(--blue);
+	padding: 0.5rem;
+}
+.profile-image i{
+	color: var(--blue);
+	font-size: var(--fn-large);
+	font-weight: bold;
+	margin-left: 1rem;
+}
+.profile-image{
+	/*background-color: red;*/
+	padding: 1rem 1rem 0rem 0rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: 2rem;
 }

@@ -8,6 +8,7 @@ from flaskApp.models import User, UserRequestForm, StaffExtension # this is our 
 from flask_login import login_user, current_user, logout_user # these are for handling sessions
 from sqlalchemy import desc
 from datetime import datetime, timedelta
+from PIL import Image
 
 
 # no idea what this does
@@ -207,7 +208,12 @@ def savePic(formPic):
 	_, f_ext = os.path.splitext(formPic.filename)
 	picFileName = randomHex + f_ext
 	fpath = os.path.join(app.root_path, 'static/profilePic', picFileName)
-	formPic.save(fpath)
+
+	outputSize = (500, 500)
+	i = Image.open(formPic)
+	i.thumbnail(outputSize)
+
+	i.save(fpath)
 
 	return picFileName
 
@@ -220,6 +226,7 @@ def profilePage():
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 	profile = User.query.filter_by(id=current_user.id).first()
 	form = ProfileForm()
+	currentProfile = current_user.profilePicture
 	page = 'None'
 
 	if current_user.userType == 'Admin':
@@ -238,7 +245,7 @@ def profilePage():
 		return redirect(url_for('profilePage'))
 
 
-	return render_template('profilePage.html', title='Profile Page', user=current_user.userName, profileImage=profileImage, page=page, profile=profile, form=form)
+	return render_template('profilePage.html', title='Profile Page', user=current_user.userName, profileImage=profileImage, page=page, profile=profile, form=form, currentProfile=currentProfile)
 
 
 # LOGOUT PAGE (this will logout the current user session)===================

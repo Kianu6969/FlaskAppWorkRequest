@@ -99,6 +99,7 @@ i{
 .profile-picture{
 	width: 3rem;
 	height: 3rem;
+	border: 1px solid var(--blue);
 }
 
 .header-user{
@@ -111,6 +112,10 @@ i{
 	margin-left: 1rem;
 }
 
+
+input[type="file"]{
+	display: none;
+}
 
 /* scroll bar style ===============================*/
 ::-webkit-scrollbar{

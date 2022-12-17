@@ -6,12 +6,23 @@
 
 
 <main class="content-main">
-	{{ profile.userName }}
 
-	<form action="" method="POST" enctype="multipart/form-data">
+
+	<form action="" method="POST" enctype="multipart/form-data" class="form-update">
 		{{form.hidden_tag()}}
-		{{ form.profilePic(class='form-file') }}
-
+		<section class="form-title">Update Profile</section>
+		<div class="profile-image">
+			<img src="{{ profileImage }}">
+			<i>{{ profile.userName }}</i>
+		</div>
+		<div class="form-group">
+			<label for="form-file" class="upload">
+				<img class="upload-logo" src="{{ url_for('static', filename='img/addImg.svg') }}">
+				<i>Add Picture</i>
+			</label>
+			{{ form.profilePic(id='form-file') }}
+		</div>
+		
 		{% if form.profilePic.errors %}
 			{% for error in form.profilePic.errors %}
 				<span style="color: red;">{{ error }}</span>
