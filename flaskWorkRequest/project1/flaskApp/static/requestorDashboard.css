@@ -69,16 +69,18 @@ body{
 	/*background-color: red;*/
 	display: flex;
 	flex-direction: column;
-	border: 1px solid var(--blueGreen);
+	border: 1px solid var(--blue);
 }
 .content-main-head{
 	flex-grow: 0;
 	font-size: var(--fn-medium);
 	text-align: center;
-	color: var(--blue);
-	border-bottom: 1px solid var(--blueGreen);
+	color: var(--white);
+	background-color: var(--blue);
+	border-bottom: 1px solid var(--blue);
 	padding: 1rem 0rem 1rem 0rem;
 	font-weight: lighter;
+	font-weight: bold;
 }
 /*content body*/
 .content-main-body{
@@ -103,8 +105,8 @@ body{
 	display: flex;
 	flex-direction: column;
 	/*padding: 1rem*/
-	border: 1px solid var(--blueGreen);
-	box-shadow: 10px 10px var(--blueGreen);
+	border: 1px solid var(--blue);
+	box-shadow: 10px 10px var(--blue);
 	margin: 0rem 3rem 2rem 3rem
 
 }
@@ -124,7 +126,7 @@ body{
 .progress-bar{
 	width: 0%;
 	height: 1rem;
-	background-color: var(--blueGreen);
+	background-color: var(--blue);
 	position: absolute;
 	top: 50%;
 	left: 3%;
@@ -146,15 +148,15 @@ body{
 
 }
 .content-main-body-requests main ul li:first-child{
-	background: var(--blueGreen);
-	border: 1px solid var(--blueGreen);
+	background: var(--blue);
+	border: 1px solid var(--blue);
 	color: var(--white);
 }	
 .content-main-body-requests main ul li{
 	width: 5rem;
 	height: 5rem;
 	background: var(--white);
-	border: 1px solid var(--blueGreen);
+	border: 1px solid var(--blue);
 	color: var(--blue);
 	display: flex;
 	justify-content: center;
@@ -163,7 +165,7 @@ body{
 	border-radius: 50%;
 }
 .content-main-body-requests footer{
-	border-top: 1px solid var(--blueGreen);
+	border-top: 1px solid var(--blue);
 	padding: 1rem 1rem 1rem 1rem; 
 	color: var(--blue);
 }
@@ -211,6 +213,7 @@ body{
 	flex-grow: 0;
 	background: var(--blueGreen);
 	color: var(--white);
+	font-weight: bold;
 	/*border-radius: 1rem 1rem 0rem 0rem;*/
 }
 .content-side-right main{
@@ -291,7 +294,7 @@ body{
 
 .content-main-foot{
 	padding: 1rem;
-	border-top: 1px solid var(--blueGreen);
+	border-top: 1px solid var(--blue);
 	text-align: center;
 }
 .request-work-btn{

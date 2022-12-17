@@ -39,7 +39,7 @@
 				</section>
 				<section class="approved-requests">
 					<div class="header">
-						<h1>Accepted Requests</h1>
+						<h1>Requests Information</h1>
 					</div>
 
 					<div class="body">
@@ -133,7 +133,9 @@
 						{% if countReq != 0 %}
 							{% for n in pendingRequest %}
 								<div class="main-content">
-									<section class="main-content-header">{{ n.requestorName }}</section>
+									<section class="main-content-header">
+										<i>{{ n.requestorName }}</i>
+									</section>
 									<section class="main-content-body">
 										<a href="{{ url_for('adminPageApproval', name=n.requestorName, idNum=n.id) }}">{{ n.requestTitle }}</a>
 									</section>

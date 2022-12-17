@@ -14,13 +14,13 @@ function progress(){
 		var finised = elementFinished[i];
 		
 		if (percent.value == 50 || percent.value == 90){
-			ongoing.style.background = '#87C0CD';
+			ongoing.style.background = '#113F67';
 			ongoing.style.color = '#F3F9FB';
 			ongoing.innerText = 'check';
 			progress_bar[i].style.width = percent.value+'%';
 
 			if(percent.value == 90){
-				finised.style.background = '#87C0CD';
+				finised.style.background = '#113F67';
 				finised.innerText = 'check';
 				finised.style.color = '#F3F9FB';
 			}

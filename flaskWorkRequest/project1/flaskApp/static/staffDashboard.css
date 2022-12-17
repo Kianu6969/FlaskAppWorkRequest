@@ -254,6 +254,21 @@ body{
 .content-finished .finished-footer{
 	margin-left: 1rem;
 }
+.content-finished .finished-footer i:last-child{
+	font-weight: bold;
+	color: var(--blueGreen);
+}
+
+.content-finished .finished-footer2{
+	margin-left: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+.content-finished .finished-footer2 i:last-child{
+	margin-left: 1rem;
+	font-weight: bold;
+	color: var(--blueGreen);
+}
 
 
 

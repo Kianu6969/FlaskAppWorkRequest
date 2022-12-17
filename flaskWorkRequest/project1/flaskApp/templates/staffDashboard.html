@@ -104,6 +104,11 @@
 						<i>{{ assigned.status }}</i>
 					</section>
 
+					<section class="finished-footer2">
+						<i>Date Finished: </i>
+						<i>{{ assigned.dateApproved.strftime("%B %d, %Y") }}</i>
+					</section>
+
 				</div>
 			{% endif %}
 		{% endfor %}

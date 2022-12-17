@@ -185,13 +185,14 @@ def staffPage():
 
 	return render_template('staffDashboard.html', title='Staff Page', user=current_user.userName, userStaff=user, profileImage=profileImage, userStaffAssigned=userStaffAssigned.staffAssignment)
 
+# This is where the finished requests go 
 @app.route('/staffPage/finished/<name>/<int:id>', methods=['POST', 'GET'])
 def staffFinishedPage(name, id):
-
 	_name = name
 	_id = id
 	form = UserRequestForm.query.filter_by(requestTitle=_name, id = _id).first()
 	form.status = 'Finished'
+	form.dateApproved = datetime.now()
 	db.session.commit()
 
 	return redirect(url_for('staffPage'))
