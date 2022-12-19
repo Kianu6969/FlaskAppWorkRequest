@@ -106,14 +106,50 @@
 					</span>
 
 					<span class="top-staff-profile">
-						{% for i in range(20) %}
+						{% for staff in staff %}
 						<div class="staff-profile">
-							<i>Name</i>
-							<i>Age</i>
-							<i>Gender</i>
-							<i>User Type</i>
-							<i>Rating</i>
-							<i>Occupation</i>
+							<i class="id" style="display: none;">{{ staff.staffId }}</i>
+							<i class="name">{{ staff.staffName }}</i>
+							<i class="age">{{ staff.staffAge }}</i>
+							<i class="gender">{{ staff.staffGender }}</i>
+							<i class="occupation">{{ staff.staffOccupation }}</i>
+							
+							<span class="rating">
+								<i>Rating: </i>
+								{% if staff.staffRating == 0 or staff.staffRating == 1%}
+									<div>
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									</div>
+								{% elif staff.staffRating == 2 %}
+									<div>
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									</div>
+								{% elif staff.staffRating == 3 %}
+									<div>
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									</div>
+								{% elif staff.staffRating == 4 %}
+									<div>
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									</div>
+								{% elif staff.staffRating == 5 %}
+									<div>
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									</div>
+								{% endif %}
+									
+							</span>
+							
 						</div>
 						{% endfor %}
 					</span>

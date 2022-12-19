@@ -24,7 +24,7 @@
 	--box-shadow-high: -5px -5px 10px 1px rgba(255, 255, 255,0.8);
 
 	--fn-regular: 1rem;
-	--fn-small: 0.7rem;
+	--fn-small: 0.9rem;
 	--fn-large: 2rem;
 	--fn-xlarge: 3rem;
 	--fn-medium: 1.5rem;
@@ -124,11 +124,11 @@ input[type="file"]{
 }
 ::-webkit-scrollbar-thumb{
 	background: var(--gray);
-	border-radius: var(--fn-small);
-	border: 5px solid var(--black);
+	/*border-radius: var(--fn-small);*/
+	border: 5px solid var(--blue);
 }
 ::-webkit-scrollbar-track{
-	background: var(--black);
+	background: var(--white);
 }
 
 ::-webkit-scrollbar-thumb:hover{

@@ -695,7 +695,7 @@ body{
 	/*display: flex;*/
 	/*justify-content: center;*/
 	flex-grow: 1;
-	background-color: green;
+	/*background-color: green;*/
 	height: 1rem;
 	overflow: scroll;
 	display: flex;
@@ -705,19 +705,88 @@ body{
 
 
 
-
+.staff-profile:first-child{
+	margin-top: 1rem;
+}
 .staff-profile{
 	/*background-color: red;*/
-	margin-top: 1rem;
-	border: 1px solid var(--blueGreen);
+	margin-bottom: 1rem;
+	border: 1px solid var(--blue);
 	font-size: var(--fn-regular);
 	font-weight: lighter;
 	width: 70%;
-	background-color: red;
+	/*background-color: red;*/
 	display: flex;
 	flex-direction: column;
+	box-shadow: 7px 7px var(--blueGreen);
+}
+.name{
+	font-size: var(--fn-large);
+	font-weight: bold;
+	padding-left: 1rem;
+	border-bottom: 1px solid var(--blue);
+}
+.name::before{
+	content: 'Name';
+	display: block;
+	font-size: var(--fn-small);
+	font-weight: lighter;
+}
+.age{
+	font-weight: bold;
+	padding-left: 1rem;
+}
+.age::before{
+	content: 'Age:';
+	display: inline-block;
+	font-size: var(--fn-small);
+	font-weight: lighter;
+	margin-right: 0.5rem;
 }
 
+.gender{
+	font-weight: bold;
+	padding-left: 1rem;
+}
+.gender::before{
+	content: 'Gender:';
+	display: inline-block;
+	font-size: var(--fn-small);
+	font-weight: lighter;
+	margin-right: 0.5rem;
+}
+
+.occupation{
+	font-weight: bold;
+	padding-left: 1rem;
+}
+.occupation::before{
+	content: 'Occupation:';
+	margin-right: 0.5rem;
+	display: inline-block;
+	font-size: var(--fn-small);
+	font-weight: lighter;
+}
+
+
+
+
+
+.rating{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-left: 1rem;
+	font-weight: bold;
+	border-top: 1px solid var(--blue);
+	background-color: var(--blue);
+	color: var(--white);
+}
+.star-rating{
+	width: 2rem;
+	height: 2rem;
+	filter: var(--img-color-white);
+}
 
 .feed-staff section:last-child{
 	background-color: skyblue;

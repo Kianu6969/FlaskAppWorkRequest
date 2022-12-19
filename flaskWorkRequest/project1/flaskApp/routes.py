@@ -27,6 +27,9 @@ def adminPage():
 	requestsCount = UserRequestForm.query.filter_by(status='Pending').count()
 	pendingRequest = UserRequestForm.query.filter_by(status='Pending').order_by(desc(UserRequestForm.dateApproved))
 	staffCount = User.query.filter_by(userType='Staff').count()
+	
+	staffs = StaffExtension.query.all()
+	# staffProfilePic = User.query.filter_by(id=staffs.staffId)
 
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 	# usersRequestor = User.query.filter_by(userType='Requestor')
@@ -64,7 +67,8 @@ def adminPage():
 	    					countReq=requestsCount,
 	    					countStaff=staffCount,
 	    					pendingRequest=pendingRequest,
-	    					profileImage=profileImage)
+	    					profileImage=profileImage,
+	    					staff=staffs)
 # reject a request
 @app.route('/adminPage/reject/<name>/<int:ids>')
 def reject(name, ids):
