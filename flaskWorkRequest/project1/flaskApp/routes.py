@@ -6,7 +6,7 @@ from flaskApp import app, db, bcrypt
 from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing, ProfileForm
 from flaskApp.models import User, UserRequestForm, StaffExtension # this is our database model
 from flask_login import login_user, current_user, logout_user # these are for handling sessions
-from sqlalchemy import desc
+from sqlalchemy import desc, asc
 from datetime import datetime, timedelta
 from PIL import Image
 
@@ -28,7 +28,7 @@ def adminPage():
 	pendingRequest = UserRequestForm.query.filter_by(status='Pending').order_by(desc(UserRequestForm.dateApproved))
 	staffCount = User.query.filter_by(userType='Staff').count()
 	
-	staffs = StaffExtension.query.all()
+	staffs = StaffExtension.query.order_by(desc(StaffExtension.staffRating)).all()
 	# staffProfilePic = User.query.filter_by(id=staffs.staffId)
 
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
@@ -212,6 +212,7 @@ def staffOngoingPage(name, idNum):
 	_id = idNum
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 	form = UserRequestForm.query.filter_by(requestorName=_name, id=_id).first()
+	
 	formSubmit = RequestOngoing()
 
 	if formSubmit.submit.data and formSubmit.validate_on_submit():
@@ -246,7 +247,7 @@ def profilePage():
 	profile = User.query.filter_by(id=current_user.id).first()
 	form = ProfileForm()
 	currentProfile = current_user.profilePicture
-
+	ratingView = User.query.filter_by(id=current_user.id).first()
 	page = 'None'
 	pageTemplate = 'profilePage.html'
 
@@ -256,6 +257,7 @@ def profilePage():
 		pageTemplate = 'profilePageAdmin.html'
 
 	elif current_user.userType == 'Staff':
+		
 		page = 'staffPage'
 		pageTemplate = 'profilePageStaff.html'
 
@@ -272,7 +274,7 @@ def profilePage():
 		return redirect(url_for('profilePage'))
 
 
-	return render_template(pageTemplate, title='Profile Page', user=current_user.userName, profileImage=profileImage, page=page, profile=profile, form=form, currentProfile=currentProfile)
+	return render_template(pageTemplate, title='Profile Page', user=current_user.userName, profileImage=profileImage, page=page, profile=profile, form=form, currentProfile=currentProfile, ratingView=ratingView)
 
 
 # LOGOUT PAGE (this will logout the current user session)===================

@@ -197,6 +197,17 @@ body{
 	flex-grow: 1;
 	margin-left: 1rem;
 	border-right: 1px solid var(--blue);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.ratings i{
+	font-weight: bold;
+	font-size: var(--fn-regular);
+}
+.star-rating{
+	filter: var(--img-color-blue);
 }
 .comments{
 	flex-grow: 1;

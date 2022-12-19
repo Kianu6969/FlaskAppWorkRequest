@@ -41,7 +41,37 @@
 <section class="content-right">
 	<section class="content-right-information">
 		<div class="ratings">
-			ratings
+			
+			<i>Average Rating:</i>
+			{% if ratingView.userStaffExtension.staffRating == 0 or ratingView.userStaffExtension.staffRating == 1%}
+				<span>
+					<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+				</span>
+			{% elif ratingView.userStaffExtension.staffRating == 2 %}
+				<span>
+					{%for i in range(2)%}
+						<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+					{% endfor %}
+				</span>
+			{% elif ratingView.userStaffExtension.staffRating == 3 %}
+				<span>
+					{%for i in range(3)%}
+						<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+					{% endfor %}
+				</span>
+			{% elif ratingView.userStaffExtension.staffRating == 4 %}
+				<span>
+					{%for i in range(4)%}
+						<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+					{% endfor %}
+				</span>
+			{% elif ratingView.userStaffExtension.staffRating == 5 %}
+				<span>
+					{%for i in range(5)%}
+						<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+					{% endfor %}
+				</span>
+			{% endif %}
 		</div>
 		<div class="comments">
 			comments

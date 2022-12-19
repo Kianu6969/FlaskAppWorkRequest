@@ -116,7 +116,10 @@ body{
 	font-size: var(--fn-medium);
 }
 
-
+.body-title{
+	background: var(--blue);
+	color: var(--white);
+}
 .content-main-body .footer{
 	/*border-top: 1px solid var(--blueGreen);*/
 	padding: 1rem;

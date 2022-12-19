@@ -720,23 +720,23 @@ body{
 	flex-direction: column;
 	box-shadow: 7px 7px var(--blueGreen);
 }
-.name{
+.staff-profile .name{
 	font-size: var(--fn-large);
 	font-weight: bold;
 	padding-left: 1rem;
 	border-bottom: 1px solid var(--blue);
 }
-.name::before{
+.staff-profile .name::before{
 	content: 'Name';
 	display: block;
 	font-size: var(--fn-small);
 	font-weight: lighter;
 }
-.age{
+.staff-profile .age{
 	font-weight: bold;
 	padding-left: 1rem;
 }
-.age::before{
+.staff-profile .age::before{
 	content: 'Age:';
 	display: inline-block;
 	font-size: var(--fn-small);
@@ -744,11 +744,11 @@ body{
 	margin-right: 0.5rem;
 }
 
-.gender{
+.staff-profile .gender{
 	font-weight: bold;
 	padding-left: 1rem;
 }
-.gender::before{
+.staff-profile .gender::before{
 	content: 'Gender:';
 	display: inline-block;
 	font-size: var(--fn-small);
@@ -756,11 +756,11 @@ body{
 	margin-right: 0.5rem;
 }
 
-.occupation{
+.staff-profile .occupation{
 	font-weight: bold;
 	padding-left: 1rem;
 }
-.occupation::before{
+.staff-profile .occupation::before{
 	content: 'Occupation:';
 	margin-right: 0.5rem;
 	display: inline-block;
@@ -772,7 +772,7 @@ body{
 
 
 
-.rating{
+.staff-profile .rating{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
