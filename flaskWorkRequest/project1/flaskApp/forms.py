@@ -41,7 +41,7 @@ class Staff_Registration(FlaskForm):
 
 # Staff Ongoing
 class RequestOngoing(FlaskForm):
-	submit = SubmitField('On Going')
+	submit = SubmitField('Start Job')
 
 # Login Form
 class LoginForm(FlaskForm):

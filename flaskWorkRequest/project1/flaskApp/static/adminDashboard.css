@@ -662,7 +662,66 @@ body{
 }
 
 /* End Requests Screen =======>*/
+.top-staff{
+	display: flex;
+	flex-direction: column;
+	/*background-color: red;*/
+}
+.feed-staff{
+	/*background-color: pink;*/
+	/*padding: 1rem;*/
+	display: none;
+	
+	grid-template-columns: 0.4fr 1fr;
+}
 
+.feed-staff section:first-child{
+	/*background-color: yellow;*/
+	display: flex;
+	flex-direction: column;
+	
+}	
+.top-staff-title{
+	border-bottom: 1px solid var(--blueGreen);
+	padding: 0.5rem 1rem 0.5rem 1rem;
+	text-align: center;
+	font-size: var(--fn-medium);
+	font-weight: bold;
+	/*background-color: orange;*/
+	flex-grow: 0;
+}
+.top-staff-profile{
+	/*padding: 0.5rem 1rem 0.5rem 1rem;*/
+	/*display: flex;*/
+	/*justify-content: center;*/
+	flex-grow: 1;
+	background-color: green;
+	height: 1rem;
+	overflow: scroll;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+
+.staff-profile{
+	/*background-color: red;*/
+	margin-top: 1rem;
+	border: 1px solid var(--blueGreen);
+	font-size: var(--fn-regular);
+	font-weight: lighter;
+	width: 70%;
+	background-color: red;
+	display: flex;
+	flex-direction: column;
+}
+
+
+.feed-staff section:last-child{
+	background-color: skyblue;
+}
 
 /*====================================*/
 /* ======== END HOME PAGE ============== */

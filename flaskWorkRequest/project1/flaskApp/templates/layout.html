@@ -76,10 +76,10 @@
                 </section>
             {% elif title == 'Staff Ongoing Page' %}
                 <section class="header-title">
-                    <a class='profile-picture' href="{{ url_for('staffPage') }}">Work Request System</a>
+                    <a href="{{ url_for('staffPage') }}">Work Request System</a>
                 </section>
                 <section class="header-user">  
-                <img src="{{ profileImage }}">
+                <img class='profile-picture' src="{{ profileImage }}">
                     <a href="{{ url_for('profilePage') }}">{{ user }}</a>
                 </section>
             {% elif title == 'Profile Page' %}

@@ -4,11 +4,61 @@
 
 <!-- MAIN CONTENT -->
 <main class="content-main">
-	{{ form.requestTitle }}
-	<form action="" method="POST">
-		{{ formSubmit.hidden_tag() }}
-		{{ formSubmit.submit() }}
-	</form>
+	<section class="content-main-header">
+		<i>Staff Start Job</i>
+	</section>		
+
+	<section class="content-main-body">
+
+		<div class="header">
+			<section class="body-title">{{ form.requestTitle }}</section>
+		</div>
+
+		<div class="body">
+			
+			<section class="body-name">
+				<i>Requestor: </i>
+				<i>{{ form.requestorName }}</i>
+			</section>
+
+			<section class="body-type">
+				<i>Type of Work: </i>
+				<i>{{ form.requestedWork }}</i>
+			</section>
+
+			<section class="body-dateLimit">
+				<i>Priority Level: </i>
+				{% if  form.priorityLevel == 1%}
+					<i style="color: red;">High</i>
+				{% elif  form.priorityLevel == 2%}
+					<i style="color: orange;">Medium</i>
+				{% elif  form.priorityLevel == 3%}
+					<i style="color: green;">Low</i>
+				{% endif %}
+			</section>
+
+			<section class="body-type">
+				<i>Work Location: </i>
+				<i>{{ form.roomNumber }}</i>
+			</section>
+
+			<section class="body-dateLimit">
+				<i>Date Limit: </i>
+				<i>{{ form.dateLimit.strftime("%B %d, %Y") }}</i>
+			</section>
+
+		</div>
+
+		<div class="footer">
+			<form action="" method="POST">
+				{{ formSubmit.hidden_tag() }}
+				{{ formSubmit.submit(class='start-job') }}
+			</form>
+		</div>
+		
+	</section>
+	
+
 </main>
 
 

@@ -19,7 +19,7 @@
 			
 			<div class="nav-staff">
 				<img class='nav-icon' src="{{ url_for('static', filename='img/staff.svg') }}">
-				<p>Work Staff Finished Jobs</p>
+				<p>Finished Jobs</p>
 			</div>
 
 			
@@ -44,7 +44,7 @@
 
 					<div class="body">
 					{% for req in workRequest  %}
-						{% if req.status != 'unApproved' and req.status != 'Pending'%}
+						{% if req.status != 'unApproved' and req.status != 'Pending' and req.status != 'PDF'%}
 						<section class="body-content">
 							<header>{{req.requestorName}}</header>
 							<main>
@@ -100,7 +100,28 @@
 
 			<!-- ====== STAFF FEED ======  -->
 			<div class="feed-staff feed-nav">
-				Staff
+				<section class="top-staff">
+					<span class="top-staff-title">
+						Top Rated Staff
+					</span>
+
+					<span class="top-staff-profile">
+						{% for i in range(20) %}
+						<div class="staff-profile">
+							<i>Name</i>
+							<i>Age</i>
+							<i>Gender</i>
+							<i>User Type</i>
+							<i>Rating</i>
+							<i>Occupation</i>
+						</div>
+						{% endfor %}
+					</span>
+				</section>
+
+				<section class="work-request-pdf">
+					PDF
+				</section>
 			</div>
 			<!-- ====== END STAFF FEED======  -->
 
