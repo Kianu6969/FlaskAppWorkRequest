@@ -273,6 +273,24 @@ body{
 	color: var(--blueGreen);
 }
 
+/* Wating for admin confirmation */
+.content-right .header2{
+	flex-grow: 0;
+	background-color: var(--blueGreen);
+	padding: 0.7rem;
+	color: var(--white);
+	font-weight: bold;
+	text-align: center;
+}
+
+.content-right .finished{
+	flex-grow: 1;
+	height: 0rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: scroll;
+}
 
 
 /*=====================*/

@@ -68,6 +68,9 @@ class UserRequestForm(db.Model):
 	dateApproved = db.Column(DateTime, default=datetime.now(), nullable=False)
 	dateLimit = db.Column(DateTime, default=datetime.now(), nullable=False)
 	requestFormId = db.Column(db.Integer, db.ForeignKey('user.id'))
+	requestRating = db.Column(db.Integer, default=0) # this is where a rating will be recorded 
+
+	#staffAssignment
 
 	assignedStaff = db.Column(db.Integer, db.ForeignKey('userstaff.id'))
 

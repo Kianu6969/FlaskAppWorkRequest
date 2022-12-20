@@ -56,7 +56,7 @@
 	<section class="header">Assigned Work</section>
 	<section class="main">
 		{% for assigned in userStaffAssigned %}
-			{% if assigned.status != 'OnGoing' and assigned.status != 'Finished'%}
+			{% if assigned.status != 'OnGoing' and assigned.status != 'Finished' and assigned.status != 'Semi Final'%}
 			<div class="content-left-items">
 				<section class="req-name">
 					{{ assigned.requestorName }}
@@ -86,7 +86,7 @@
 <!-- ========== Right Content ========== -->
 <section class="content-right">
 	<section class="header">Finished Jobs</section>
-	<section class="main">
+	<section class="main semi-final">
 		<!-- This is where all the finished stuff is located -->
 		{% for assigned in userStaffAssigned %}
 			{% if assigned.status == 'Finished'%}
@@ -113,6 +113,36 @@
 			{% endif %}
 		{% endfor %}
 	</section>
+
+	<section class="header2">Admin Confirmation</section>
+
+	<section class="finished">
+		{% for assigned in userStaffAssigned %}
+			{% if assigned.status == 'Semi Final'%}
+				<div class="content-finished">
+					<section class="finished-header">
+						{{ assigned.requestorName }}
+					</section>
+
+					<section class="finished-main">
+						{{ assigned.requestTitle }}
+					</section>
+
+					<section class="finished-footer">
+						<i>Status: </i>
+						<i>{{ assigned.status }}</i>
+					</section>
+
+					<section class="finished-footer">
+						<i>Date Finished: </i>
+						<i>{{ assigned.dateApproved.strftime("%B %d, %Y") }}</i>
+					</section>
+
+				</div>
+			{% endif %}
+		{% endfor %}
+	</section>
+
 	<section class="footer"></section>
 </section>
 <!-- ========== END - Right Content - END ========== -->

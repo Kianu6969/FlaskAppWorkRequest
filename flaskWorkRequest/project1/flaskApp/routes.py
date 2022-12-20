@@ -82,6 +82,15 @@ def reject(name, ids):
 
 
 
+# ADMIN FINAL CONFIRMATION
+@app.route('/adminPage/finalConfirmation/<name>/<int:idNum>', methods=['POST', 'GET'])
+def adminFinalConfirm(name, idNum):
+	name_ = name
+	id_ = idNum
+
+
+	return name
+
 
 # ADMIN APPROVAL PAGE - This is where the admin can approve a pending work request
 @app.route('/adminPage/requestApproval/<name>/<int:idNum>', methods=['POST', 'GET'])
@@ -195,7 +204,7 @@ def staffFinishedPage(name, id):
 	_name = name
 	_id = id
 	form = UserRequestForm.query.filter_by(requestTitle=_name, id = _id).first()
-	form.status = 'Finished'
+	form.status = 'Semi Final'
 	form.dateApproved = datetime.now()
 	db.session.commit()
 

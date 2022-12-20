@@ -27,7 +27,7 @@
 									<li class="finished material-icons">close</li>
 									<div class="progress-bar"></div>
 								</ul>
-								{% elif userForms.status == 'OnGoing'%}
+								{% elif userForms.status == 'OnGoing' or userForms.status == 'Semi Final'%}
 								<ul class="progress">
 									<li class="approved material-icons" value="50%">check</li>
 									<li class="ongoing material-icons">close</li>
@@ -71,6 +71,12 @@
 							<p>Date Work Time: </p> 
 							<p id="status" style="font-weight: bold;">{{ userForms.dateApproved.strftime("%B %d, %Y") }} - {{ userForms.dateLimit.strftime("%B %d, %Y") }}</p>
 						</span>
+
+						{% if userForms.status == 'Finished'%}
+							<span class="rate-btn">
+								<a href="">Rate Staff</a>
+							</span>
+						{% endif %}
 
 					</footer>
 				</div>

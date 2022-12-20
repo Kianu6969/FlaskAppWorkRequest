@@ -44,7 +44,7 @@
 
 					<div class="body">
 					{% for req in workRequest  %}
-						{% if req.status != 'unApproved' and req.status != 'Pending' and req.status != 'PDF'%}
+						{% if req.status != 'unApproved' and req.status != 'Pending' and req.status != 'Semi Final'%}
 						<section class="body-content">
 							<header>{{req.requestorName}}</header>
 							<main>
@@ -155,8 +155,30 @@
 					</span>
 				</section>
 
-				<section class="work-request-pdf">
-					PDF
+				<section class="work-request-confirmation">
+					<section class="header">Final Confirmation</section>
+
+					<section class="main">
+						{% for i in workRequest  %}
+							{% if i.status == 'Semi Final' %}
+								<div class="main-content">
+									
+									<span class="name">{{i.requestorName}}</span>
+									<span class="title">{{i.requestTitle}}</span>
+									<span class="type">{{i.requestedWork}}</span>
+									<span class="location">{{i.roomNumber}}</span>
+									<span class="date">{{i.dateApproved.strftime("%B %d, %Y")}} - {{i.dateLimit.strftime("%B %d, %Y")}}</span>
+									<span class="confirm-finish">
+										<a href="{{ url_for('adminFinalConfirm', name=i.requestorName, idNum=i.id) }}">Finish</a>
+									</span>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</section>
+
+					<section class="footer">
+						
+					</section>
 				</section>
 			</div>
 			<!-- ====== END STAFF FEED======  -->
