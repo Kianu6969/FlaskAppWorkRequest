@@ -1,7 +1,5 @@
 @import 'globalVariables.css';
 
-
-
 body{
 	background: var(--white);
 }
@@ -60,3 +58,95 @@ body{
 	font-weight: lighter;
 	color: var(--blue);
 }
+
+
+/*========================*/
+/*====== MAIN CONTENT ====*/
+/*========================*/
+
+.content-main{
+	grid-area: m;
+	/*background-color: pink;*/
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--blue);
+}
+.content-main h1{
+	font-size: var(--fn-medium);
+	margin-top: 1rem;
+}
+.content-main section{
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--blue);
+	width: 30%;
+	box-shadow: 10px 10px var(--blue);
+}
+.content-main section i:first-child{
+	text-align: center;
+	font-size: var(--fn-medium);
+	border-bottom: 1px solid var(--blue);
+	background-color: var(--blue);
+	color: var(--white);
+}
+.content-main section i:nth-child(2){
+	text-align: center;
+	font-size: var(--fn-large);
+	border-bottom: 1px solid var(--blue);
+}
+
+.content-main section i:nth-child(2)::after{
+	content: 'Rate Staff from 1 - 5';
+	font-size: var(--fn-small);
+	display: block;
+}
+
+.rate-staff{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+
+
+ul{
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	margin-right: 1rem;
+	justify-content: space-around;
+	padding: 1rem;
+	font-size: var(--fn-medium);
+}
+li{
+	padding-left: 2rem;
+	padding-right: 1rem;
+	/*background-color: green;*/
+}
+.rate-staff div:last-child{
+	border-top: 1px solid var(--blue);
+	padding: 1rem;
+}
+
+.rating-btn{
+	border: 1px solid var(--blue);
+	padding: 0.5rem 2rem 0.5rem 2rem; 
+	margin-left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+	background-color: var(--white);
+	font-size: var(--fn-regular);
+	font-weight: bold;
+}
+
+.rating-btn:hover{
+	background-color: var(--blue);
+	color: var(--white);
+}
+.content-footer{
+	grid-area: f;
+}
+
+

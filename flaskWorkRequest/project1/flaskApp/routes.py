@@ -233,15 +233,43 @@ def staffUnFinishedPage(name, id):
 def rateStaff(reqId, idNum):
 
 	form = RateStaff()
+	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 	name_= reqId
 	id_ = idNum
 	user = UserRequestForm.query.filter_by(assignedStaff=id_, id=name_).first()
+	userFormsCount = UserRequestForm.query.filter_by(assignedStaff=id_)
 	count = UserRequestForm.query.filter_by(assignedStaff=id_).count()
-	user.requestRating = 3
+	staff = StaffExtension.query.filter_by(staffName=user.staffAssignment.staffName).first()
+
+	if form.submit.data and form.validate_on_submit():
+		print(form.rate.data)
+		print(staff.staffName)
+		user.requestRating = form.rate.data
+
+		rateNum = 0
+		for i in userFormsCount:
+			print('Rating: ',i.requestRating)
+			rateNum += int(i.requestRating)
+			# rateNum = i.requestRating
+			# print('request rating: ',userFormsCount.requestRating)
+
+		res = rateNum / count
+		print('Avg: ',res)
+		# res = rateNum / count
+		# user.requestRating = form.rate.data
+		# db.session.commit()
+
+		staff.staffRating = res 
+		db.session.commit()
+		# print(res * 100);
+
+
+		return redirect(url_for('requestorPage'))
+	# user.requestRating = 3
 	# db.session.commit()
 	# f"{user.requestTitle}, {user.staffAssignment.staffName}, {count}"
 
-	return render_template('rateStaff.html', title='Rate Staff', name=user.requestTitle, work=user.staffAssignment.staffName)
+	return render_template('rateStaff.html', title='Rate Staff', name=user.requestTitle, work=user.staffAssignment.staffName, profileImage=profileImage, user =current_user.userName, form=form)
 
 
 # Staff ongoing page - where the staff can change the status of the form

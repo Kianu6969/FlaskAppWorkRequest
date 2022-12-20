@@ -3,7 +3,31 @@
 
 
 {% block content %}
-	{{name}}
-	{{work}}
+
+	<main class="content-main">
+		<h1>Staff Rating</h1>
+		<section>
+
+			<i>{{work}}</i>
+			<i>{{name}}</i>
+
+			<form class="rate-staff" action="" method="POST">
+				{{ form.hidden_tag() }}
+
+				<div>
+					{{ form.rate(class='rating') }}
+				</div>
+				
+				<div>
+					{{ form.submit(class='rating-btn') }}
+				</div>
+				
+			</form>
+		</section>
+
+	</main>
+
+	<footer class="content-footer" ></footer>
+	
 
 {% endblock content %}

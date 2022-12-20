@@ -41,7 +41,7 @@ class StaffExtension(db.Model):
 	staffAssignment = db.relationship('UserRequestForm', backref='staffAssignment') # one to many relationship
 
 	def __repr__(self): # this will print 
-		return f"User({self.id}, {self.staffId}, {self.staffName})"
+		return f"User({self.id}, {self.staffId}, {self.staffName}, {self.staffRating})"
 
 # Staff Comments
 class StaffExtensionComment(db.Model):
@@ -75,6 +75,6 @@ class UserRequestForm(db.Model):
 	assignedStaff = db.Column(db.Integer, db.ForeignKey('userstaff.id'))
 
 	def __repr__(self): # this will print 
-		return f"User({self.requestorName},{self.requestTitle}, {self.requestedWork}, {self.roomNumber}, {self.requestFormId}, {self.priorityLevel}, {self.avilabilityOfMaterials}, {self.status}, {self.requestRating}, {self.staffAssignment.staffName})"
+		return f"User({self.requestorName},{self.requestTitle}, {self.requestedWork}, {self.roomNumber}, {self.requestFormId}, {self.priorityLevel}, {self.avilabilityOfMaterials}, {self.status}, {self.requestRating}, {self.requestRating})"
 
 

@@ -116,7 +116,7 @@
 							
 							<span class="rating">
 								<i>Rating: </i>
-								{% if staff.staffRating == 0 or staff.staffRating == 1%}
+								{% if staff.staffRating >= 0 and staff.staffRating == 1%}
 									<div>
 										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
 									</div>
