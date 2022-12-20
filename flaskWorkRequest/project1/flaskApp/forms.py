@@ -87,5 +87,5 @@ class ProfileForm(FlaskForm):
 
 class RateStaff(FlaskForm):
 
-	
+	rate = RadioField('Rating', choices=[1,2,3,4,5])
 	submit = SubmitField('Rate')

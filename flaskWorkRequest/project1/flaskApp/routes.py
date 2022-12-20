@@ -3,7 +3,7 @@ import secrets
 from flask import render_template, url_for, flash, redirect
 from flaskApp import app, db, bcrypt
  # this is our forms
-from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing, ProfileForm
+from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing, ProfileForm, RateStaff
 from flaskApp.models import User, UserRequestForm, StaffExtension # this is our database model
 from flask_login import login_user, current_user, logout_user, login_required # these are for handling sessions
 from sqlalchemy import desc, asc
@@ -220,14 +220,16 @@ def staffFinishedPage(name, id):
 @app.route('/staffPage/rateStaff/<reqId>/<idNum>', methods=['GET', 'POST'])
 def rateStaff(reqId, idNum):
 
+	form = RateStaff()
 	name_= reqId
 	id_ = idNum
 	user = UserRequestForm.query.filter_by(assignedStaff=id_, id=name_).first()
 	count = UserRequestForm.query.filter_by(assignedStaff=id_).count()
 	user.requestRating = 3
 	# db.session.commit()
+	# f"{user.requestTitle}, {user.staffAssignment.staffName}, {count}"
 
-	return f"{user.requestTitle}, {user.staffAssignment.staffName}, {count}"
+	return render_template('rateStaff.html', title='Rate Staff', name=user.requestTitle, work=user.staffAssignment.staffName)
 
 
 # Staff ongoing page - where the staff can change the status of the form

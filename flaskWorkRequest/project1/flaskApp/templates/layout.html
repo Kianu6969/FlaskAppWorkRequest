@@ -90,6 +90,14 @@
                 <img class='profile-picture' src="{{ profileImage }}"> 
                     <a href="{{ url_for('profilePage') }}">{{ user }}</a>
                 </section>
+            {% elif title == 'Rate Staff' %}
+                <section class="header-title">
+                    <a href="{{ url_for('requestorPage') }}">Work Request System</a>
+                </section>
+                <section class="header-user">  
+                <img class='profile-picture' src="{{ profileImage }}"> 
+                    <a href="{{ url_for('profilePage') }}">{{ user }}</a>
+                </section>
             {% endif %}
 
             <div class="header-profile">
