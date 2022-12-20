@@ -81,3 +81,11 @@ class ProfileForm(FlaskForm):
 
 	profilePic = FileField('Update Profile Picture', validators=[FileAllowed(['jpg','png'])])
 	submit = SubmitField('Update')
+
+
+# rate staff
+
+class RateStaff(FlaskForm):
+
+	
+	submit = SubmitField('Rate')

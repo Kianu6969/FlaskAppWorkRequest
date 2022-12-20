@@ -223,10 +223,11 @@ def rateStaff(reqId, idNum):
 	name_= reqId
 	id_ = idNum
 	user = UserRequestForm.query.filter_by(assignedStaff=id_, id=name_).first()
+	count = UserRequestForm.query.filter_by(assignedStaff=id_).count()
 	user.requestRating = 3
-	db.session.commit()
+	# db.session.commit()
 
-	return f"{user.requestTitle}, {user.staffAssignment.staffName}"
+	return f"{user.requestTitle}, {user.staffAssignment.staffName}, {count}"
 
 
 # Staff ongoing page - where the staff can change the status of the form
