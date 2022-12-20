@@ -66,7 +66,40 @@
 						<section class="main"><a href='#'id="staffName">{{ staff.staffName }}</a></section>
 						<section class="footer">
 							<i>Occupation: {{ staff.staffOccupation }}</i>
-							<i>Rating: * * * * *</i>
+							{% if staff.staffRating == 0 or staff.staffRating == 1%}
+								<i>
+									<i>Rating: </i>
+									<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+								</i>
+							{% elif staff.staffRating == 0 or staff.staffRating == 2%}
+								<i>
+									<i>Rating: </i>
+									{% for i in range(2) %}
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									{% endfor %}
+								</i>
+							{% elif staff.staffRating == 0 or staff.staffRating == 3%}
+								<i>
+									<i>Rating: </i>
+									{% for i in range(3) %}
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									{% endfor %}
+								</i>
+							{% elif staff.staffRating == 0 or staff.staffRating == 4%}
+								<i>
+									<i>Rating: </i>
+									{% for i in range(4) %}
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									{% endfor %}
+								</i>
+							{% elif staff.staffRating == 0 or staff.staffRating == 5%}
+								<i>
+									<i>Rating: </i>
+									{% for i in range(5) %}
+										<img class='star-rating' src="{{ url_for('static', filename='img/star.svg') }}">
+									{% endfor %}
+								</i>
+							{% endif %}
 						</section>
 
 					</div>

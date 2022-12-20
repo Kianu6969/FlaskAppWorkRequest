@@ -84,7 +84,7 @@
 									<span>Priority Level: <i style="color: green">Low</i></span>
 								{% endif %}
 								<span>Date Work Time: <i>{{ req.dateApproved.strftime("%B %d, %Y") }} - {{ req.dateLimit.strftime("%B %d, %Y")  }}</i></span>
-								<span>Assigned Staff: <a href="#">{{ req.staffAssignment.staffName }}</a></span>
+								<span>Assigned Staff: <i style="text-decoration: underline;">{{ req.staffAssignment.staffName }}</i></span>
 								<span>Work Location: <i>{{ req.roomNumber }}</i></span>
 							</footer>
 						</section>
@@ -156,10 +156,10 @@
 				</section>
 
 				<section class="work-request-confirmation">
-					<section class="header">Final Confirmation</section>
+					<section class="header">Final Work Confirmation</section>
 
 					<section class="main">
-						{% for i in workRequest  %}
+						{% for i in workRequest %}
 							{% if i.status == 'Semi Final' %}
 								<div class="main-content">
 									

@@ -832,6 +832,8 @@ body{
 	font-size: var(--fn-medium);
 	border-bottom: 1px solid var(--blue);
 	text-align: center;
+	background-color: var(--blue);
+	color: var(--white);
 }
 
 

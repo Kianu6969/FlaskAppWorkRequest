@@ -78,7 +78,7 @@
 
 						{% if userForms.status == 'Finished'%}
 							<span class="rate-btn">
-								<a href="">Rate Staff</a>
+								<a href="{{ url_for('rateStaff', reqId=userForms.id, idNum=userForms.staffAssignment.id) }}">Rate Staff</a>
 							</span>
 						{% endif %}
 

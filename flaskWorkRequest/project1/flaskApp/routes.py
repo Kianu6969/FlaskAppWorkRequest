@@ -5,7 +5,7 @@ from flaskApp import app, db, bcrypt
  # this is our forms
 from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing, ProfileForm
 from flaskApp.models import User, UserRequestForm, StaffExtension # this is our database model
-from flask_login import login_user, current_user, logout_user # these are for handling sessions
+from flask_login import login_user, current_user, logout_user, login_required # these are for handling sessions
 from sqlalchemy import desc, asc
 from datetime import datetime, timedelta
 from PIL import Image
@@ -20,7 +20,11 @@ from PIL import Image
 # ADMINISTRATOR PAGE===================================
 
 @app.route('/adminPage', methods=['GET', 'POST']) 
+@login_required
 def adminPage():
+	if current_user.is_authenticated == False:
+		return redirect(url_for('loginPage'))
+
 	formStaff = Staff_Registration()
 	formRequestor = Requestor_Registration()
 	workRequest = UserRequestForm.query.order_by(UserRequestForm.priorityLevel)
@@ -34,8 +38,7 @@ def adminPage():
 	profileImage = url_for('static', filename='profilePic/'+current_user.profilePicture)
 	# usersRequestor = User.query.filter_by(userType='Requestor')
 
-	if current_user.is_authenticated == False:
-		return redirect(url_for('loginPage'))
+	
 	
 	
 	# ----- Requestor Registration -----
@@ -212,6 +215,18 @@ def staffFinishedPage(name, id):
 	db.session.commit()
 
 	return redirect(url_for('staffPage'))
+
+# Rate staff
+@app.route('/staffPage/rateStaff/<reqId>/<idNum>', methods=['GET', 'POST'])
+def rateStaff(reqId, idNum):
+
+	name_= reqId
+	id_ = idNum
+	user = UserRequestForm.query.filter_by(assignedStaff=id_, id=name_).first()
+	user.requestRating = 3
+	db.session.commit()
+
+	return f"{user.requestTitle}, {user.staffAssignment.staffName}"
 
 
 # Staff ongoing page - where the staff can change the status of the form

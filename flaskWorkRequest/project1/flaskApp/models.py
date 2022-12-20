@@ -75,6 +75,6 @@ class UserRequestForm(db.Model):
 	assignedStaff = db.Column(db.Integer, db.ForeignKey('userstaff.id'))
 
 	def __repr__(self): # this will print 
-		return f"User({self.requestorName},{self.requestTitle}, {self.requestedWork}, {self.roomNumber}, {self.requestFormId}, {self.priorityLevel}, {self.avilabilityOfMaterials}, {self.status})"
+		return f"User({self.requestorName},{self.requestTitle}, {self.requestedWork}, {self.roomNumber}, {self.requestFormId}, {self.priorityLevel}, {self.avilabilityOfMaterials}, {self.status}, {self.requestRating}, {self.staffAssignment.staffName})"
 
 
