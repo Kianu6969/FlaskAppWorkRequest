@@ -167,6 +167,7 @@
 									<span class="title">{{i.requestTitle}}</span>
 									<span class="type">{{i.requestedWork}}</span>
 									<span class="location">{{i.roomNumber}}</span>
+									<span class="staff">{{i.staffAssignment.staffName}} - {{i.staffAssignment.staffOccupation}}</span>
 									<span class="date">{{i.dateApproved.strftime("%B %d, %Y")}} - {{i.dateLimit.strftime("%B %d, %Y")}}</span>
 									<span class="confirm-finish">
 										<a href="{{ url_for('adminFinalConfirm', name=i.requestorName, idNum=i.id) }}">Finish</a>

@@ -88,8 +88,11 @@ def adminFinalConfirm(name, idNum):
 	name_ = name
 	id_ = idNum
 
+	user = UserRequestForm.query.filter_by(requestorName = name_, id = id_).first()
+	user.status = 'Finished'
+	db.session.commit()
 
-	return name
+	return redirect(url_for('adminPage'))
 
 
 # ADMIN APPROVAL PAGE - This is where the admin can approve a pending work request

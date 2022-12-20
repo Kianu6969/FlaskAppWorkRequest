@@ -64,7 +64,11 @@
 						</span>
 						<span class="status">
 							<p>Status: </p> 
-							<p id="status">{{ userForms.status }}</p>
+							{% if userForms.status == 'Semi Final' %}
+								<p id="status" style="color: gray;">Waiting For Confirmation</p>
+							{% else %}
+								<p id="status">{{ userForms.status }}</p>
+							{% endif %}
 						</span>
 
 						<span class="dateApp">

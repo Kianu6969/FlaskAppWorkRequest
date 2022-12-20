@@ -807,7 +807,16 @@ body{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	overflow: scroll;
 	height: 0rem;
+}
+.work-request-confirmation .main .main-content:first-child{
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--blue);
+	width: 50%;
+	box-shadow: 10px 10px var(--blue);
+	margin-top: 1rem;
 }
 .work-request-confirmation .main .main-content{
 	display: flex;
@@ -815,7 +824,7 @@ body{
 	border: 1px solid var(--blue);
 	width: 50%;
 	box-shadow: 10px 10px var(--blue);
-	margin-top: 1rem;
+	margin-bottom: 2rem;
 }
 
 .work-request-confirmation .main .main-content .name{
@@ -841,6 +850,19 @@ body{
 }
 .work-request-confirmation .main .main-content .type::before{
 	content: 'Type of Work: ';
+	font-size: var(--fn-small);
+	font-weight: lighter;
+	display: block;
+}
+
+.work-request-confirmation .main .main-content .staff{
+	font-weight: bold;
+	font-size: var(--fn-regular);
+	border-bottom: 1px solid var(--blue);
+	padding-left: 1rem;
+}
+.work-request-confirmation .main .main-content .staff::before{
+	content: 'Staff Assigned: ';
 	font-size: var(--fn-small);
 	font-weight: lighter;
 	display: block;
