@@ -1,7 +1,8 @@
 import os
 import secrets
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, make_response
 from flaskApp import app, db, bcrypt
+from fpdf import FPDF
  # this is our forms
 from flaskApp.forms import Requestor_Registration, Staff_Registration, LoginForm, WorkRequestForm, RequestApproval, RequestOngoing, ProfileForm, RateStaff
 from flaskApp.models import User, UserRequestForm, StaffExtension # this is our database model
@@ -354,6 +355,32 @@ def logout():
 		return redirect(url_for('loginPage'))
 	logout_user()
 	return redirect('loginPage')
+
+
+# Generate PDF
+
+@app.route('/pdf/<name>/<idNum>')
+def generatePdf(name, idNum):
+
+
+	pdf = FPDF()
+
+	pdf.add_page()
+	user = User.query.all()
+	count = User.query.all().count
+
+
+	pdf.set_font('Arial', 'B', 16)
+	for i in user:
+
+		pdf.cell(40, 10, i.userName, 1)
+		pdf.ln()
+
+	response = make_response(pdf.output(dest='S').encode('latin1'))
+	response.headers['Content-Type'] = 'application/pdf'
+	response.headers['Content-Disposition'] = 'attachment; filename=report.pdf'
+
+	return response
 
 
 
