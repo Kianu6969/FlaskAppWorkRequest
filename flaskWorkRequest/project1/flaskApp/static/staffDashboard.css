@@ -108,7 +108,7 @@ body{
 	font-size: var(--fn-large);
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	/*justify-content: space-between;*/
 	align-items: center;
 }
 .content-title span{
@@ -116,6 +116,15 @@ body{
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
+}
+.content-title i{
+	flex-grow: 1;
+}
+.finished{
+	flex-grow: 0;
+}
+.not-done{
+	flex-grow: 0;
 }
 .content-title span img{
 	filter: var(--img-color-blue);

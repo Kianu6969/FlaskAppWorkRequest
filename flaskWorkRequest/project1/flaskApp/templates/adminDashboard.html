@@ -44,7 +44,7 @@
 
 					<div class="body">
 					{% for req in workRequest  %}
-						{% if req.status != 'unApproved' and req.status != 'Pending' and req.status != 'Semi Final'%}
+						{% if req.status != 'unApproved' and req.status != 'Pending' and req.status != 'Semi Final' and req.status != 'Finished'%}
 						<section class="body-content">
 							<header>{{req.requestorName}}</header>
 							<main>

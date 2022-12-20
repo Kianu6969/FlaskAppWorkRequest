@@ -216,6 +216,18 @@ def staffFinishedPage(name, id):
 
 	return redirect(url_for('staffPage'))
 
+# This is where the infinished requests go 
+@app.route('/staffPage/unfinished/<name>/<int:id>', methods=['POST', 'GET'])
+def staffUnFinishedPage(name, id):
+	_name = name
+	_id = id
+	form = UserRequestForm.query.filter_by(requestTitle=_name, id = _id).first()
+	form.status = 'Unfinished'
+	form.dateApproved = datetime.now()
+	db.session.commit()
+
+	return redirect(url_for('staffPage'))
+
 # Rate staff
 @app.route('/staffPage/rateStaff/<reqId>/<idNum>', methods=['GET', 'POST'])
 def rateStaff(reqId, idNum):
